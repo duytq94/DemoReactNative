@@ -79,7 +79,6 @@ export class StackScreen extends Component {
 					}>
 					<FlatList
 						style={{ backgroundColor: "#6699AA" }}
-						colors={["red"]}
 						data={this.props.data}
 						renderItem={this.itemFlatList}
 						keyExtractor={(item, index) => index}

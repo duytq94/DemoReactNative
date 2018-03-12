@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text, BackHandler, StatusBar } from 'react-native'
 import { Container, Header, Body, Title, Content, Button, Left, Right, Icon, Item, Form } from 'native-base'
-import MapView from 'react-native-maps';
-import Polyline from '@mapbox/polyline';
+import MapView from 'react-native-maps'
+import Polyline from '@mapbox/polyline'
+import Toast from 'react-native-simple-toast'
 
 export default class MapScreen extends Component {
 
@@ -48,20 +49,10 @@ export default class MapScreen extends Component {
 		return true;
 	}
 
-	initialRegion() {
-		return {
-			region: {
-				latitude: 10.777130,
-				longitude: 106.620646,
-				latitudeDelta: 0.0922,
-				longitudeDelta: 0.0421,
-			}
-		}
-	}
-
 	async getDirection(from, to) {
 		try {
-			let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${from}&destination=${to}`);
+			let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${from}&destination=${to}&key=AIzaSyBNgfNRXRU2kRgbW92vjq38_ryPSiCJT5Y`);
+
 			let respJson = await resp.json();
 			let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
 			let coords = points.map((point, index) => {
@@ -73,7 +64,7 @@ export default class MapScreen extends Component {
 			this.setState({ coords: coords })
 			return coords;
 		} catch (error) {
-			return error;
+			Toast.show(`${error}`)
 		}
 	}
 
@@ -106,8 +97,8 @@ export default class MapScreen extends Component {
 					<MapView
 						style={{ flex: 1 }}
 						region={{
-							latitude: 10.777130,
-							longitude: 106.620646,
+							latitude: 10.8015,
+							longitude: 106.653,
 							latitudeDelta: 0.0922,
 							longitudeDelta: 0.0421,
 						}}
@@ -123,13 +114,13 @@ export default class MapScreen extends Component {
 
 						<MapView.Polyline
 							coordinates={this.state.coords}
-							strokeWidth={3}
+							strokeWidth={5}
 							strokeColor="red" />
 
 					</MapView>
 
 					<Button onPress={() => {
-						this.getDirection('10.8015,106.653', '10.7993196,106.6430653');
+						this.getDirection(`${this.state.latitude},${this.state.longitude}`, '10.8015,106.653');
 					}}>
 						<Text>Get direction</Text>
 					</Button>
