@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, BackHandler, Image, StatusBar, StyleSheet, ScrollView, TextInput, Dimensions, KeyboardAvoidingView } from 'react-native'
 import { Container, Header, Body, Title, Content, Button, Left, Right, Icon, Item, Form } from 'native-base'
+import styles from './Main.Style'
 
 export default class SigninScreen extends Component {
 
@@ -25,13 +26,11 @@ export default class SigninScreen extends Component {
 	render() {
 		return (
 
-			<Container style={{ backgroundColor: 'black' }}>
+			<View>
 
-				<StatusBar hidden={true} />
-
-				<Image
-					source={require('../../../assets/bg_signin.png')}
-					style={{ opacity: 0.4, position: 'absolute', width: Dimensions.get('window').width, height: Dimensions.get('window').height }} />
+				<View style={styles.toolbar}>
+					<Text style={styles.titleToolbar}>SIGN IN</Text>
+				</View>
 
 				<Content>
 
@@ -123,7 +122,7 @@ export default class SigninScreen extends Component {
 
 				</Content>
 
-			</Container >
+			</View >
 		)
 	}
 }
