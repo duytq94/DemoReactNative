@@ -4,7 +4,7 @@ import LaunchScreen from '../Containers/LaunchScreen'
 import MainScreen from '../Containers/Main/Main.Screen'
 import SigninScreen from '../Containers/Signin/Signin.Screen'
 import FetchScreen from '../Containers/Fetch/Fetch.Screen'
-import StackScreen from '../Containers/Stack/Stack.Screen'
+import ListScreen from '../Containers/List/List.Screen'
 import TabScreen from '../Containers/Tab/Tab.Screen'
 import ProfileScreen from '../Containers/Profile/Profile.Screen'
 import LogicScreen from '../Containers/Logic/Logic.Screen'
@@ -23,7 +23,7 @@ const PrimaryNav = StackNavigator({
   MainScreen: { screen: MainScreen },
   SigninScreen: { screen: SigninScreen },
   FetchScreen: { screen: FetchScreen },
-  StackScreen: { screen: StackScreen },
+  ListScreen: { screen: ListScreen },
   TabScreen: { screen: TabScreen },
   ProfileScreen: { screen: ProfileScreen },
   LogicScreen: { screen: LogicScreen },

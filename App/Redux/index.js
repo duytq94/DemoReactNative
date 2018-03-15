@@ -8,7 +8,7 @@ export const reducers = combineReducers({
   github: require('./GithubRedux').reducer,
   search: require('./SearchRedux').reducer,
   fetch: require('../Containers/Fetch/Fetch.Reducer').reducer,
-  stack: require('../Containers/Stack/Stack.Reducer').reducer
+  list: require('../Containers/List/List.Reducer').reducer
 })
 
 export default () => {

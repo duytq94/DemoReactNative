@@ -21,13 +21,13 @@ export default class MainScreen extends Component {
 					<TouchableOpacity style={styles.button} onPress={() => {
 						this.props.navigation.navigate('FetchScreen', {});
 					}}>
-						<Text style={styles.textBtn}>FetchApiScreen</Text>
+						<Text style={styles.textBtn}>FetchApi Screen</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity style={styles.button} onPress={() => {
-						this.props.navigation.navigate('StackScreen', {});
+						this.props.navigation.navigate('ListScreen', {});
 					}}>
-						<Text style={styles.textBtn}>StackOverflow</Text>
+						<Text style={styles.textBtn}>List Screen</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity style={styles.button} onPress={() => {

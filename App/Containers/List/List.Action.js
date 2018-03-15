@@ -7,9 +7,9 @@ const { Types, Creators } = createActions({
 	failure: ['error']
 });
 
-export const StackType = Types;
-export const StackAction = Creators;
-export const StackFunction = {
+export const ListType = Types;
+export const ListAction = Creators;
+export const ListFunction = {
 	getList
 };
 
@@ -18,8 +18,8 @@ function* getList(api, action) {
 	const response = yield call(api.getList, site);
 
 	if (response.ok && response.status === 200) {
-		yield put(StackAction.success(response.data));
+		yield put(ListAction.success(response.data));
 	} else {
-		yield put(StackAction.failure(JSON.stringify(response.data)));
+		yield put(ListAction.failure(JSON.stringify(response.data)));
 	}
 }

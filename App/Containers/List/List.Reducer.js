@@ -1,4 +1,4 @@
-import { StackType } from './Stack.Action'
+import { ListType } from './List.Action'
 import { createReducer } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 
@@ -9,7 +9,7 @@ const INITIAL_STATE = Immutable({
 });
 
 export const reducer = createReducer(INITIAL_STATE, {
-	[StackType.SITE]: (state, action) => {
+	[ListType.SITE]: (state, action) => {
 		return {
 			...state,
 			data: null,
@@ -17,7 +17,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 			error: false
 		}
 	},
-	[StackType.SUCCESS]: (state, action) => {
+	[ListType.SUCCESS]: (state, action) => {
 		return {
 			...state,
 			data: action.data,
@@ -26,7 +26,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 		}
 	}
 	,
-	[StackType.FAILURE]: (state, action) => {
+	[ListType.FAILURE]: (state, action) => {
 		return {
 			...state,
 			data: action.error,

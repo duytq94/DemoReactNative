@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View, Text, BackHandler, Image, StatusBar, StyleSheet, ScrollView, TextInput, Dimensions, KeyboardAvoidingView } from 'react-native'
-import { Container, Header, Body, Title, Content, Button, Left, Right, Icon, Item, Form } from 'native-base'
-import styles from './Main.Style'
+import { TouchableOpacity, View, Text, BackHandler, Image, StatusBar, StyleSheet, ScrollView, TextInput, Dimensions, KeyboardAvoidingView } from 'react-native'
+import styles from './Signin.Style'
+import images from '../../Themes/Images'
 
 export default class SigninScreen extends Component {
 
@@ -29,121 +29,59 @@ export default class SigninScreen extends Component {
 			<View>
 
 				<View style={styles.toolbar}>
+					<TouchableOpacity onPress={() => this.handleBackPress()}>
+						<Image style={styles.icBack} source={images.ic_back} />
+					</TouchableOpacity>
 					<Text style={styles.titleToolbar}>SIGN IN</Text>
+					<View style={styles.icBack} />
 				</View>
 
-				<Content>
+				<ScrollView>
+					<View style={{ flex: 1 }}>
+						<Text style={styles.textTitle}>LET'S GET STARTED</Text>
 
-					<KeyboardAvoidingView
-						behavior='padding'
-					>
-						<Button transparent light
-							style={{ width: 50, height: 50 }}
-							onPress={() => {
-								this.props.navigation.goBack();
-							}}
-						>
-							<Icon name='ios-arrow-back' />
-						</Button>
-
-						<Text style={{
-							color: 'white',
-							fontSize: 24.7,
-							alignSelf: 'center',
-							marginTop: 40,
-							marginBottom: 20,
-							fontFamily: 'SFUIText-Bold'
-						}}>
-							LET'S GET STARTED
-                    </Text>
-
-						<Item style={styles.itemInput}>
-							<Icon name='globe' style={styles.iconInput} />
-							<TextInput style={styles.textInput} underlineColorAndroid='transparent' placeholder='COUNTRY' placeholderTextColor='#aeaeae'
+						<View style={styles.viewInput}>
+							<TextInput style={styles.textInput} underlineColorAndroid='#7e8da6' placeholder='COUNTRY' placeholderTextColor='#aeaeae'
 								returnKeyType='next' onSubmitEditing={() => {
 									this.refs.username.focus();
 								}} />
-						</Item>
-						<Item style={styles.itemInput}>
-							<Icon name='unlock' style={styles.iconInput} />
-							<TextInput style={styles.textInput} underlineColorAndroid='transparent' ref='username' placeholder='USERNAME' placeholderTextColor='#aeaeae'
+						</View>
+						<View style={styles.viewInput}>
+							<TextInput style={styles.textInput} underlineColorAndroid='#7e8da6' ref='username' placeholder='USERNAME' placeholderTextColor='#aeaeae'
 								returnKeyType='next' onSubmitEditing={() => {
 									this.refs.email.focus();
 								}} />
-						</Item>
-						<Item style={styles.itemInput}>
-							<Icon name='home' style={styles.iconInput} />
-							<TextInput style={styles.textInput} underlineColorAndroid='transparent' ref='email' placeholder='EMAIL' placeholderTextColor='#aeaeae'
+						</View>
+						<View style={styles.viewInput}>
+							<TextInput style={styles.textInput} underlineColorAndroid='#7e8da6' ref='email' placeholder='EMAIL' placeholderTextColor='#aeaeae'
 								returnKeyType='next' keyboardType='email-address' onSubmitEditing={() => {
 									this.refs.password.focus();
 								}} />
-						</Item>
-						<Item style={styles.itemInput}>
-							<Icon name='home' style={styles.iconInput} />
-							<TextInput style={styles.textInput} underlineColorAndroid='transparent' ref='password' placeholder='PASSWORD' placeholderTextColor='#aeaeae'
+						</View>
+						<View style={styles.viewInput}>
+							<TextInput style={styles.textInput} underlineColorAndroid='#7e8da6' ref='password' placeholder='PASSWORD' placeholderTextColor='#aeaeae'
 								returnKeyType='next' keyboardType='numeric' onSubmitEditing={() => {
 									this.refs.confirm.focus();
 								}} />
-						</Item>
-						<Item style={styles.itemInput}>
-							<Icon name='home' style={styles.iconInput} />
-							<TextInput style={styles.textInput} underlineColorAndroid='transparent' ref='confirm' placeholder='CONFIRM PASSWORD' placeholderTextColor='#aeaeae'
+						</View>
+						<View style={styles.viewInput}>
+							<TextInput style={styles.textInput} underlineColorAndroid='#7e8da6' ref='confirm' placeholder='CONFIRM PASSWORD' placeholderTextColor='#aeaeae'
 								returnKeyType='next' keyboardType='numeric' onSubmitEditing={() => {
 									this.refs.phone.focus();
 								}} />
-						</Item>
-						<Item style={styles.itemInput}>
-							<Icon name='home' style={styles.iconInput} />
-							<TextInput style={styles.textInput} underlineColorAndroid='transparent' ref='phone' placeholder='MOBILE PHONE' placeholderTextColor='#aeaeae'
+						</View>
+						<View style={styles.viewInput}>
+							<TextInput style={styles.textInput} underlineColorAndroid='#7e8da6' ref='phone' placeholder='MOBILE PHONE' placeholderTextColor='#aeaeae'
 								returnKeyType='done' keyboardType='phone-pad' />
-						</Item>
+						</View>
 
-						<Button full style={{
-							borderRadius: 10,
-							backgroundColor: '#e86d4b',
-							borderColor: '#e86d4b',
-							alignSelf: 'center',
-							width: 300,
-							height: 60,
-							marginTop: 30,
-							marginBottom: 30
-						}}>
-							<Text style={{
-								color: 'white',
-								fontSize: 19.3,
-								position: 'absolute',
-								fontFamily: 'SFUIText-Bold'
-							}}>
-								SIGN UP
-                        </Text>
-						</Button>
-
-					</KeyboardAvoidingView>
-
-				</Content>
+						<TouchableOpacity style={styles.btnSignIn}>
+							<Text style={styles.textSignIn}>SIGN IN</Text>
+						</TouchableOpacity>
+					</View>
+				</ScrollView>
 
 			</View >
 		)
 	}
 }
-
-const styles = StyleSheet.create({
-	itemInput: {
-		marginTop: 10,
-		marginLeft: 30,
-		borderColor: '#aeaeae',
-		marginRight: 30,
-
-	},
-	textInput: {
-		color: 'white',
-		marginLeft: 20,
-		fontFamily: 'SFUIText-Light',
-		fontSize: 16,
-		flex: 1,
-	},
-	iconInput: {
-		color: 'white',
-		left: 15
-	}
-})
