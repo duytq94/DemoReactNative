@@ -2,7 +2,6 @@ import { StackNavigator } from 'react-navigation'
 
 import LaunchScreen from '../Containers/LaunchScreen'
 import MainScreen from '../Containers/Main/Main.Screen'
-import SigninScreen from '../Containers/Signin/Signin.Screen'
 import FetchScreen from '../Containers/Fetch/Fetch.Screen'
 import ListScreen from '../Containers/List/List.Screen'
 import TabScreen from '../Containers/Tab/Tab.Screen'
@@ -17,27 +16,29 @@ import ModalScreen from '../Containers/Modal/Modal.Screen'
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
-const PrimaryNav = StackNavigator({
-  LaunchScreen: { screen: LaunchScreen },
-  MainScreen: { screen: MainScreen },
-  SigninScreen: { screen: SigninScreen },
-  FetchScreen: { screen: FetchScreen },
-  ListScreen: { screen: ListScreen },
-  TabScreen: { screen: TabScreen },
-  ProfileScreen: { screen: ProfileScreen },
-  LogicScreen: { screen: LogicScreen },
-  MapScreen: { screen: MapScreen },
-  WebScreen: { screen: WebScreen },
-  TimeScreen: { screen: TimeScreen },
-  FacebookScreen: { screen: FacebookScreen },
-  ModalScreen: { screen: ModalScreen },
-}, {
+const PrimaryNav = StackNavigator(
+  {
+    LaunchScreen: { screen: LaunchScreen },
+    MainScreen: { screen: MainScreen },
+    FetchScreen: { screen: FetchScreen },
+    ListScreen: { screen: ListScreen },
+    TabScreen: { screen: TabScreen },
+    ProfileScreen: { screen: ProfileScreen },
+    LogicScreen: { screen: LogicScreen },
+    MapScreen: { screen: MapScreen },
+    WebScreen: { screen: WebScreen },
+    TimeScreen: { screen: TimeScreen },
+    FacebookScreen: { screen: FacebookScreen },
+    ModalScreen: { screen: ModalScreen }
+  },
+  {
     // Default config for all screens
     headerMode: 'none',
     initialRouteName: 'MainScreen',
     navigationOptions: {
       headerStyle: styles.header
     }
-  })
+  }
+)
 
 export default PrimaryNav

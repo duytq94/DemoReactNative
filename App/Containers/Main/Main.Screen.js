@@ -15,15 +15,6 @@ export default class MainScreen extends Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                this.props.navigation.navigate('SigninScreen', {})
-              }}
-            >
-              <Text style={styles.textBtn}>Signin Screen</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => {
                 this.props.navigation.navigate('FetchScreen', {})
               }}
             >
