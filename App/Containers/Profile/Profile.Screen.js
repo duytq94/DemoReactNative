@@ -6,7 +6,6 @@ import {
   BackHandler,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
   StatusBar,
   ScrollView
 } from 'react-native'
