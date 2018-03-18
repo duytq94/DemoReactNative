@@ -10,17 +10,6 @@ import {
   RefreshControl,
   Linking
 } from 'react-native'
-import {
-  Container,
-  Header,
-  Body,
-  Title,
-  Content,
-  Button,
-  Left,
-  Right,
-  Icon
-} from 'native-base'
 
 import { connect } from 'react-redux'
 import { ListAction } from './List.Action'

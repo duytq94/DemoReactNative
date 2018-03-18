@@ -73,8 +73,8 @@ export default StyleSheet.create({
   },
   viewSeparator: {
     width: '90%',
-    height: 0.3,
-    backgroundColor: 'gray',
+    height: 0.5,
+    backgroundColor: '#7e8da6',
     alignSelf: 'center'
   }
 })

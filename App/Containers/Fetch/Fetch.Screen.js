@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { View, Text, BackHandler } from 'react-native'
 import {
-  Container,
-  Header,
-  Body,
-  Title,
-  Content,
-  Button,
-  Left,
-  Right,
-  Icon
-} from 'native-base'
+  View,
+  Text,
+  BackHandler,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  ActivityIndicator
+} from 'react-native'
+
+import styles from './Fetch.Style'
+import images from '../../Themes/Images'
 
 import { connect } from 'react-redux'
 import { FetchAction } from './Fetch.Action'
@@ -36,55 +36,46 @@ class FetchScreen extends Component {
 
   render() {
     return (
-      <Container>
-        <Header>
-          <Left>
-            <Button
-              transparent
-              onPress={() => {
-                this.props.navigation.goBack()
-              }}
-            >
-              <Icon name="arrow-back" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>FetchApiScreen</Title>
-          </Body>
-          <Right>
-            <Button transparent onPress={() => {}}>
-              <Icon name="menu" />
-            </Button>
-          </Right>
-        </Header>
+      <View style={styles.viewContainer}>
+        <View style={styles.toolbar}>
+          <TouchableOpacity onPress={() => this.handleBackPress()}>
+            <Image style={styles.icBack} source={images.ic_back} />
+          </TouchableOpacity>
+          <Text style={styles.titleToolbar}>FETCH API</Text>
+          <View style={styles.icBack} />
+        </View>
 
-        <Content style={{ backgroundColor: 'cyan' }}>
-          <Button
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={styles.viewButton}
             onPress={() => {
               this.props.getDataLocal(FetchAction.localRequest('hello'))
             }}
           >
-            <Text>Test data</Text>
-          </Button>
+            <Text style={styles.textButton}>Get data local</Text>
+          </TouchableOpacity>
 
-          <Button
+          <TouchableOpacity
+            style={styles.viewButton}
             onPress={() => {
               this.props.getUser(FetchAction.userRequest('duy'))
             }}
           >
-            <Text>Fetch user</Text>
-          </Button>
+            <Text style={styles.textButton}>Fetch user</Text>
+          </TouchableOpacity>
 
-          {this.props.isFetching ? (
-            <Text>Fetching...</Text>
-          ) : (
-            <View>
-              <Text>Data: {this.props.data}</Text>
-              {this.props.error ? <Text>Has error</Text> : null}
-            </View>
-          )}
-        </Content>
-      </Container>
+          <ScrollView style={styles.viewContent}>
+            {this.props.isFetching ? (
+              <ActivityIndicator size="large" />
+            ) : (
+              <View>
+                <Text>Data: {this.props.data}</Text>
+                {this.props.error ? <Text>Has error</Text> : null}
+              </View>
+            )}
+          </ScrollView>
+        </View>
+      </View>
     )
   }
 }

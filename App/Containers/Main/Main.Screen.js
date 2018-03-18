@@ -33,7 +33,7 @@ export default class MainScreen extends Component {
 					<TouchableOpacity style={styles.button} onPress={() => {
 						this.props.navigation.navigate('TabScreen', {});
 					}}>
-						<Text style={styles.textBtn}>TabScreen</Text>
+						<Text style={styles.textBtn}>Tab Screen</Text>
 					</TouchableOpacity>
 
 					<TouchableOpacity style={styles.button} onPress={() => {
