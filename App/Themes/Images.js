@@ -21,7 +21,10 @@ const images = {
   backButton: require('../Images/Icons/back-button.png'),
   closeButton: require('../Images/Icons/close-button.png'),
 
-  ic_back: require('../Images/ic_back.png')
+  ic_back: require('../Images/ic_back.png'),
+  ic_avatar: require('../Images/ic_avatar.png'),
+  ic_camera: require('../Images/ic_camera.png'),
+  bg_avatar: require('../Images/bg_avatar.png'),
 }
 
 export default images

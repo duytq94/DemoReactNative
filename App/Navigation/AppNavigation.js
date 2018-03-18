@@ -9,7 +9,6 @@ import TabScreen from '../Containers/Tab/Tab.Screen'
 import ProfileScreen from '../Containers/Profile/Profile.Screen'
 import LogicScreen from '../Containers/Logic/Logic.Screen'
 import MapScreen from '../Containers/Map/Map.Screen'
-import PhotoScreen from '../Containers/Photo/Photo.Screen'
 import WebScreen from '../Containers/Web/Web.Screen'
 import TimeScreen from '../Containers/Time/Time.Screen'
 import FacebookScreen from '../Containers/Facebook/Facebook.Screen'
@@ -28,7 +27,6 @@ const PrimaryNav = StackNavigator({
   ProfileScreen: { screen: ProfileScreen },
   LogicScreen: { screen: LogicScreen },
   MapScreen: { screen: MapScreen },
-  PhotoScreen: { screen: PhotoScreen },
   WebScreen: { screen: WebScreen },
   TimeScreen: { screen: TimeScreen },
   FacebookScreen: { screen: FacebookScreen },

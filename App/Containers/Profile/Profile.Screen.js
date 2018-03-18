@@ -1,21 +1,33 @@
 import React, { Component } from 'react'
-import { View, Text, BackHandler, Image, StatusBar, StyleSheet, ScrollView, TextInput, Dimensions, KeyboardAvoidingView } from 'react-native'
-import { Container, Header, Body, Title, Content, Button, Left, Right, Icon, Item, Form } from 'native-base'
+import {
+  View,
+  Text,
+  Image,
+  BackHandler,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  StatusBar,
+  ScrollView
+} from 'react-native'
 import Permissions from 'react-native-permissions'
+import ImagePicker from 'react-native-image-picker'
+
+import styles from './Profile.Style'
+import images from '../../Themes/Images'
 
 export default class ProfileScreen extends Component {
-
   constructor(props) {
-    super(props);
-    backPress = this.handleBackPress.bind(this);
+    super(props)
+    backPress = this.handleBackPress.bind(this)
 
     Permissions.request('storage', {
       rationale: {
         title: 'Cool Photo App Camera Permission',
         message:
           'Cool Photo App needs access to your camera ' +
-          'so you can take awesome pictures.',
-      },
+          'so you can take awesome pictures.'
+      }
     }).then(response => {
       this.setState({ storagePermission: response })
     })
@@ -24,161 +36,184 @@ export default class ProfileScreen extends Component {
     //     // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
     //     this.setState({ smsPermission: response })
     // })
+
+    this.state = {
+      avatarSource: '',
+      backgroundSource: ''
+    }
+  }
+
+  pickPhoto(isChangeAvatar) {
+    var options = {
+      title: 'Chọn hình',
+      customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images'
+      }
+    }
+
+    ImagePicker.showImagePicker(options, response => {
+      console.log('Response = ', response)
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker')
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error)
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton)
+      } else {
+        let source = { uri: response.uri }
+
+        // You can also display the image using data:
+        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+        if (isChangeAvatar) {
+          this.setState({ avatarSource: source })
+        } else {
+          this.setState({ backgroundSource: source })
+        }
+      }
+    })
   }
 
   componentWillMount() {
-    BackHandler.addEventListener("hardwareBackPress", backPress);
+    BackHandler.addEventListener('hardwareBackPress', backPress)
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener("hardwareBackPress", backPress);
-    console.log('duy log storage', this.state.storagePermission);
-    // console.log('duy log sms', this.state.smsPermission);        
+    BackHandler.removeEventListener('hardwareBackPress', backPress)
+    console.log('duy log storage', this.state.storagePermission)
+    // console.log('duy log sms', this.state.smsPermission);
   }
 
   handleBackPress() {
-    this.props.navigation.goBack();
-    return true;
+    this.props.navigation.goBack()
+    return true
   }
 
   render() {
     return (
+      <View style={styles.viewContainer}>
+        <View style={styles.toolbar}>
+          <TouchableOpacity onPress={() => this.handleBackPress()}>
+            <Image style={styles.icBack} source={images.ic_back} />
+          </TouchableOpacity>
+          <Text style={styles.titleToolbar}>EDIT PROFILE</Text>
+          <View style={styles.icBack} />
+        </View>
 
-      <Container style={{ backgroundColor: 'white' }}>
+        <StatusBar backgroundColor="#000000" />
 
-        <Header style={{ height: 48 }} backgroundColor='#ee613a'>
-          <Left>
-            <Button transparent light
-              style={{ width: 50, height: 50 }}
-              onPress={() => {
-                this.props.navigation.goBack();
-              }}
-            >
-              <Icon name='ios-arrow-back' />
-            </Button>
-          </Left>
-          <Body>
-            <Text style={styles.titleButton}>
-              EDIT PROFILE
-                        </Text>
-          </Body>
-        </Header>
-
-        <StatusBar backgroundColor='#ee613a' />
-
-        <Content>
-          <KeyboardAvoidingView
-            behavior='padding'
+        {/* Change background */}
+        <View>
+          <Image
+            resizeMode="cover"
+            source={
+              this.state.backgroundSource
+                ? this.state.backgroundSource
+                : images.bg_avatar
+            }
+            style={{ height: 150 }}
+          />
+          <TouchableOpacity
+            onPress={() => this.pickPhoto(false)}
+            style={styles.btnChangeBackground}
           >
-
-            <View style={{ position: 'absolute', width: Dimensions.get('window').width, height: 173, backgroundColor: 'black' }}>
-              <Image
-                resizeMode='cover'
-                source={require('../../../assets/bg_signin.png')}
-                style={{ position: 'absolute', opacity: 0.4, width: Dimensions.get('window').width, height: 173 }} />
-
-              <View style={{
-                marginTop: 10, marginRight: 10, alignSelf: 'flex-end', alignItems: 'center', justifyContent: 'center',
-                width: 50, height: 50, borderRadius: 50 / 2, backgroundColor: 'rgba(0, 0, 0, 0.5)'
-              }}>
-                <Icon style={{ position: 'absolute', color: 'white' }} name='camera' />
-                <Button transparent
-                  style={{ width: 50, height: 50 }}
-                  onPress={() => {
-
-                  }}
-                />
-              </View>
-
-            </View>
-
             <Image
-              style={{ marginTop: 120, alignSelf: 'center', width: 100, height: 100, borderRadius: 100 / 2 }}
-              source={require('../../../assets/ic_avatar.png')}
+              style={{ width: 30, height: 30 }}
+              source={images.ic_camera}
             />
+          </TouchableOpacity>
+        </View>
 
-            <View
-              style={{ alignItems: 'center', justifyContent: 'center', position: 'absolute', backgroundColor: 'rgba(0, 0, 0, 0.5)', marginTop: 120, alignSelf: 'center', width: 100, height: 100, borderRadius: 100 / 2 }}
-            >
-              <Icon style={{ color: 'white' }} name='camera' />
+        {/* Change avatar */}
+        <View style={styles.viewWrapAvatar}>
+          <Image
+            style={styles.imageChangeAvatar}
+            source={
+              this.state.avatarSource
+                ? this.state.avatarSource
+                : images.ic_avatar
+            }
+          />
+          <TouchableOpacity
+            onPress={() => this.pickPhoto(true)}
+            style={styles.btnChangeAvatar}
+          >
+            <Image
+              style={{ width: 40, height: 40 }}
+              source={images.ic_camera}
+            />
+          </TouchableOpacity>
+        </View>
+
+        {/* Input field */}
+        <ScrollView>
+          <View style={{ marginLeft: 10, marginRight: 10, flex: 1 }}>
+            <View style={styles.viewItemInput}>
+              <Text style={styles.textTitleInput}>Username</Text>
+              <TextInput
+                style={styles.textInput}
+                underlineColorAndroid="#aeaeae"
+                placeholder="Harry King"
+                placeholderTextColor="#aeaeae"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  this.refs.username.focus()
+                }}
+              />
             </View>
 
-            <View style={styles.itemInput}>
-              <Text style={styles.titleInput} >Username</Text>
-              <TextInput style={styles.textInput} underlineColorAndroid='#aeaeae' placeholder='Harry King' placeholderTextColor='#aeaeae'
-                returnKeyType='next' onSubmitEditing={() => {
-                  this.refs.username.focus();
-                }} />
+            <View style={styles.viewItemInput}>
+              <Text style={styles.textTitleInput}>Country</Text>
+              <TextInput
+                style={styles.textInput}
+                underlineColorAndroid="#aeaeae"
+                placeholder="Singapore"
+                placeholderTextColor="#aeaeae"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  this.refs.username.focus()
+                }}
+              />
             </View>
 
-            <View style={styles.itemInput}>
-              <Text style={styles.titleInput} >Country</Text>
-              <TextInput style={styles.textInput} underlineColorAndroid='#aeaeae' placeholder='Singapore' placeholderTextColor='#aeaeae'
-                returnKeyType='next' onSubmitEditing={() => {
-                  this.refs.username.focus();
-                }} />
+            <View style={styles.viewItemInput}>
+              <Text style={styles.textTitleInput}>Address</Text>
+              <TextInput
+                style={styles.textInput}
+                underlineColorAndroid="#aeaeae"
+                placeholder="4 Leng Kee Road, Singapore"
+                placeholderTextColor="#aeaeae"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  this.refs.username.focus()
+                }}
+              />
             </View>
 
-            <View style={styles.itemInput}>
-              <Text style={styles.titleInput} >Address</Text>
-              <TextInput style={styles.textInput} underlineColorAndroid='#aeaeae' placeholder='4 Leng Kee Road, Singapore' placeholderTextColor='#aeaeae'
-                returnKeyType='next' onSubmitEditing={() => {
-                  this.refs.username.focus();
-                }} />
+            <View style={styles.viewItemInput}>
+              <Text style={styles.textTitleInput}>Aboute me</Text>
+              <TextInput
+                style={styles.textInput}
+                underlineColorAndroid="#aeaeae"
+                placeholder="Fun"
+                placeholderTextColor="#aeaeae"
+                multiline={true}
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  this.refs.username.focus()
+                }}
+              />
             </View>
+          </View>
+        </ScrollView>
 
-            <View style={styles.itemInput}>
-              <Text style={styles.titleInput} >Aboute me</Text>
-              <TextInput style={styles.textInput} underlineColorAndroid='#aeaeae' placeholder='Fun'
-                placeholderTextColor='#aeaeae' multiline={true}
-                returnKeyType='next' onSubmitEditing={() => {
-                  this.refs.username.focus();
-                }} />
-            </View>
-
-          </KeyboardAvoidingView>
-
-        </Content>
-
-        <Button full style={{
-          backgroundColor: '#e86d4b',
-          borderColor: '#e86d4b',
-          alignSelf: 'flex-end',
-          bottom: 0,
-          width: Dimensions.get('window').width,
-          height: 50
-        }}>
-          <Text style={styles.titleButton}>DONE</Text>
-        </Button>
-
-      </Container >
+        <TouchableOpacity style={styles.btnDone}>
+          <Text style={styles.textBtnDone}>DONE</Text>
+        </TouchableOpacity>
+      </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  itemInput: {
-    marginTop: 20,
-    marginLeft: 30,
-    borderColor: '#aeaeae',
-    marginRight: 30,
-
-  },
-  titleInput: {
-    color: '#959595',
-    fontFamily: 'SFUIText-Bold',
-    fontSize: 13,
-
-  },
-  textInput: {
-    color: '#3b3b3b',
-    fontFamily: 'SFUIText-Bold',
-    fontSize: 16,
-    flex: 1,
-  },
-  titleButton: {
-    fontFamily: 'HelveticaNeue-Medium',
-    fontSize: 17,
-    color: 'white',
-  }
-})

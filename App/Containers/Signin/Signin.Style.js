@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+  viewContainer: {
+    flex: 1
+  },
   toolbar: {
     width: '100%',
     height: 48,
@@ -20,18 +23,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     flex: 1
   },
-  button: {
-    borderRadius: 10,
-    margin: 10,
-    alignItems: 'center',
-    backgroundColor: '#203152'
-  },
-  textBtn: {
-    color: '#f9b228',
-    fontSize: 16,
-    alignSelf: 'center',
-    margin: 10
-  },
   viewInput: {
     marginTop: 10,
     marginLeft: 30,
@@ -39,7 +30,6 @@ export default StyleSheet.create({
   },
   textInput: {
     color: 'black',
-
     fontFamily: 'SFUIText-Light',
     fontSize: 16,
     flex: 1
@@ -49,14 +39,13 @@ export default StyleSheet.create({
     backgroundColor: '#f5a623',
     alignSelf: 'center',
     width: 300,
-    height: 60,
-    marginTop: 30,
-    marginBottom: 50,
+    height: 50,
+    margin: 10,
     justifyContent: 'center'
   },
   textSignIn: {
-    color: 'white',
-    fontSize: 19.3,
+    color: 'black',
+    fontSize: 18,
     position: 'absolute',
     fontFamily: 'SFUIText-Bold',
     alignSelf: 'center'

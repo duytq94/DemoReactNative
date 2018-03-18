@@ -36,7 +36,7 @@ export default class SigninScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.viewContainer}>
         <View style={styles.toolbar}>
           <TouchableOpacity onPress={() => this.handleBackPress()}>
             <Image style={styles.icBack} source={images.ic_back} />
@@ -46,7 +46,7 @@ export default class SigninScreen extends Component {
         </View>
 
         <ScrollView>
-          <View>
+          <View style={{ flex: 1 }}>
             <Text style={styles.textTitle}>LET'S GET STARTED</Text>
 
             <View style={styles.viewInput}>
@@ -127,12 +127,12 @@ export default class SigninScreen extends Component {
                 keyboardType="phone-pad"
               />
             </View>
-
-            <TouchableOpacity style={styles.btnSignIn}>
-              <Text style={styles.textSignIn}>SIGN IN</Text>
-            </TouchableOpacity>
           </View>
         </ScrollView>
+
+        <TouchableOpacity style={styles.btnSignIn}>
+          <Text style={styles.textSignIn}>SIGN IN</Text>
+        </TouchableOpacity>
       </View>
     )
   }
