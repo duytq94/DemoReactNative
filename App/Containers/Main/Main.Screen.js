@@ -51,10 +51,10 @@ export default class MainScreen extends Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                this.props.navigation.navigate('LogicScreen', {})
+                this.props.navigation.navigate('AsyncStorageScreen', {})
               }}
             >
-              <Text style={styles.textBtn}>LogicScreen</Text>
+              <Text style={styles.textBtn}>AsyncStorage Screen</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -81,7 +81,7 @@ export default class MainScreen extends Component {
                 this.props.navigation.navigate('TimeScreen', {})
               }}
             >
-              <Text style={styles.textBtn}>TimeScreen</Text>
+              <Text style={styles.textBtn}>Time Screen</Text>
             </TouchableOpacity>
 
             <TouchableOpacity

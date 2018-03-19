@@ -6,7 +6,7 @@ import FetchScreen from '../Containers/Fetch/Fetch.Screen'
 import ListScreen from '../Containers/List/List.Screen'
 import TabScreen from '../Containers/Tab/Tab.Screen'
 import ProfileScreen from '../Containers/Profile/Profile.Screen'
-import LogicScreen from '../Containers/Logic/Logic.Screen'
+import AsyncStorageScreen from '../Containers/AsyncStorage/AsyncStorage.Screen'
 import MapScreen from '../Containers/Map/Map.Screen'
 import WebScreen from '../Containers/Web/Web.Screen'
 import TimeScreen from '../Containers/Time/Time.Screen'
@@ -24,7 +24,7 @@ const PrimaryNav = StackNavigator(
     ListScreen: { screen: ListScreen },
     TabScreen: { screen: TabScreen },
     ProfileScreen: { screen: ProfileScreen },
-    LogicScreen: { screen: LogicScreen },
+    AsyncStorageScreen: { screen: AsyncStorageScreen },
     MapScreen: { screen: MapScreen },
     WebScreen: { screen: WebScreen },
     TimeScreen: { screen: TimeScreen },

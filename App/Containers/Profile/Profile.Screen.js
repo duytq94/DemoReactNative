@@ -159,7 +159,7 @@ export default class ProfileScreen extends Component {
                 placeholderTextColor="#aeaeae"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  this.refs.username.focus()
+                  this.refs.countryInput.focus()
                 }}
               />
             </View>
@@ -167,13 +167,14 @@ export default class ProfileScreen extends Component {
             <View style={styles.viewItemInput}>
               <Text style={styles.textTitleInput}>Country</Text>
               <TextInput
+                ref="countryInput"
                 style={styles.textInput}
                 underlineColorAndroid="#aeaeae"
                 placeholder="Singapore"
                 placeholderTextColor="#aeaeae"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  this.refs.username.focus()
+                  this.refs.addressInput.focus()
                 }}
               />
             </View>
@@ -181,13 +182,14 @@ export default class ProfileScreen extends Component {
             <View style={styles.viewItemInput}>
               <Text style={styles.textTitleInput}>Address</Text>
               <TextInput
+                ref="addressInput"
                 style={styles.textInput}
                 underlineColorAndroid="#aeaeae"
                 placeholder="4 Leng Kee Road, Singapore"
                 placeholderTextColor="#aeaeae"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  this.refs.username.focus()
+                  this.refs.aboutMeInput.focus()
                 }}
               />
             </View>
@@ -195,15 +197,12 @@ export default class ProfileScreen extends Component {
             <View style={styles.viewItemInput}>
               <Text style={styles.textTitleInput}>Aboute me</Text>
               <TextInput
+                ref="aboutMeInput"
                 style={styles.textInput}
                 underlineColorAndroid="#aeaeae"
                 placeholder="Fun"
                 placeholderTextColor="#aeaeae"
                 multiline={true}
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  this.refs.username.focus()
-                }}
               />
             </View>
           </View>
