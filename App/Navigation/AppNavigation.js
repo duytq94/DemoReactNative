@@ -1,6 +1,5 @@
 import { StackNavigator } from 'react-navigation'
 
-import LaunchScreen from '../Containers/LaunchScreen'
 import MainScreen from '../Containers/Main/Main.Screen'
 import FetchScreen from '../Containers/Fetch/Fetch.Screen'
 import ListScreen from '../Containers/List/List.Screen'
@@ -12,6 +11,7 @@ import WebScreen from '../Containers/Web/Web.Screen'
 import TimeScreen from '../Containers/Time/Time.Screen'
 import FacebookScreen from '../Containers/Facebook/Facebook.Screen'
 import ModalScreen from '../Containers/Modal/Modal.Screen'
+import LaunchScreen from '../Containers/Launch/Launch.Screen'
 
 import styles from './Styles/NavigationStyles'
 
@@ -34,7 +34,7 @@ const PrimaryNav = StackNavigator(
   {
     // Default config for all screens
     headerMode: 'none',
-    initialRouteName: 'MainScreen',
+    initialRouteName: 'LaunchScreen',
     navigationOptions: {
       headerStyle: styles.header
     }
