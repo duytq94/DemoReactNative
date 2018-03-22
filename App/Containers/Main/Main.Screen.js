@@ -24,6 +24,15 @@ export default class MainScreen extends Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
+                this.props.navigation.navigate('AnimationScreen', {})
+              }}
+            >
+              <Text style={styles.textBtn}>Animation Screen</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
                 this.props.navigation.navigate('ListScreen', {})
               }}
             >
