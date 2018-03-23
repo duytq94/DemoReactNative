@@ -23,4 +23,15 @@ export default StyleSheet.create({
     textAlign: 'center',
     flex: 1
   },
+  btn: {
+    backgroundColor: '#7e8da6',
+    padding: 10,
+    borderRadius: 10,
+    flex: 1,
+    margin: 10
+  },
+  textBtn: {
+    color: 'white',
+    textAlign: 'center'
+  }
 })

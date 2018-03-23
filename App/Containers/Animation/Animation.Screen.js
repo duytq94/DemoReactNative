@@ -20,6 +20,7 @@ export default class ProfileScreen extends Component {
   constructor(props) {
     super(props)
     backPress = this.handleBackPress.bind(this)
+    this.state = {}
   }
 
   componentWillMount() {
@@ -46,32 +47,65 @@ export default class ProfileScreen extends Component {
           <View style={styles.icBack} />
         </View>
 
-        <ZoomInView
+        <View
           style={{
+            width: '100%',
+            height: 100,
             alignItems: 'center',
             justifyContent: 'center',
-            width: '100%'
+            marginTop: 20,
+            marginBottom: 20
           }}
         >
-          <Image
-            style={{ width: '100%', height: '100%' }}
-            resizeMode="contain"
-            source={images.logo_uit}
-          />
-        </ZoomInView>
+          <ZoomInView>
+            <Image
+              style={{ width: '100%', height: '100%' }}
+              resizeMode="contain"
+              source={images.logo_uit}
+            />
+          </ZoomInView>
+        </View>
 
-        <FadeInView
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <Image
-            style={{ width: 100, height: 100 }}
-            resizeMode="contain"
-            source={images.logo_uit}
-          />
-        </FadeInView>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>ZOOM IN</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>ZOOM OUT</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>FADE IN</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>FADE OUT</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>BLINK</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>SLIDE UP</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>ROTATE</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>MOVE</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>BOUNCE</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn}>
+            <Text style={styles.textBtn}>COMBINE</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
