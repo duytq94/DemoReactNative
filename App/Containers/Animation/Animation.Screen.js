@@ -49,6 +49,7 @@ export default class ProfileScreen extends Component {
           <View style={styles.icBack} />
         </View>
 
+        {/* Image demo */}
         <View
           style={{
             width: '100%',
@@ -123,9 +124,26 @@ export default class ProfileScreen extends Component {
                 source={images.logo_uit}
               />
             </BounceView>
+          ) : this.state.whichBtnClick === 'blink' ? (
+            <BlinkView>
+              <Image
+                style={{ width: 100, height: 100 }}
+                resizeMode="contain"
+                source={images.logo_uit}
+              />
+            </BlinkView>
+          ) : this.state.whichBtnClick === 'combine' ? (
+            <CombineView>
+              <Image
+                style={{ width: 100, height: 100 }}
+                resizeMode="contain"
+                source={images.logo_uit}
+              />
+            </CombineView>
           ) : null}
         </View>
 
+        {/* Buttons */}
         <View style={{ flexDirection: 'row' }}>
           <TouchableOpacity
             onPress={() => this.setState({ whichBtnClick: 'zoom in' })}
@@ -180,6 +198,20 @@ export default class ProfileScreen extends Component {
             style={styles.btn}
           >
             <Text style={styles.textBtn}>MOVE</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity
+            onPress={() => this.setState({ whichBtnClick: 'blink' })}
+            style={styles.btn}
+          >
+            <Text style={styles.textBtn}>BLINK</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.setState({ whichBtnClick: 'combine' })}
+            style={styles.btn}
+          >
+            <Text style={styles.textBtn}>COMBINE</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -390,6 +422,76 @@ class BounceView extends Component {
   render() {
     return (
       <Animated.View style={{ marginBottom: this.bounceAnim }}>
+        {this.props.children}
+      </Animated.View>
+    )
+  }
+}
+
+class BlinkView extends Component {
+  constructor(props) {
+    super(props)
+
+    this.blinkAnim = new Animated.Value(0)
+  }
+
+  componentDidMount() {
+    const anim = Animated.timing(this.blinkAnim, {
+      toValue: 1,
+      duration: 200
+    })
+    Animated.loop(anim).start()
+  }
+
+  render() {
+    return (
+      <Animated.View style={{ opacity: this.blinkAnim }}>
+        {this.props.children}
+      </Animated.View>
+    )
+  }
+}
+
+class CombineView extends Component {
+  constructor(props) {
+    super(props)
+
+    this.combineAnim1 = new Animated.Value(-200)
+    this.combineAnim2 = new Animated.Value(-160)
+    this.combineAnim3 = new Animated.Value(-100)
+    this.combineAnim4 = new Animated.Value(-80)
+  }
+
+  componentDidMount() {
+    const anim1 = Animated.timing(this.combineAnim1, {
+      toValue: 0,
+      duration: 2000
+    })
+    const anim2 = Animated.timing(this.combineAnim2, {
+      toValue: 0,
+      duration: 2000
+    })
+    const anim3 = Animated.timing(this.combineAnim3, {
+      toValue: 100,
+      duration: 2000
+    })
+    const anim4 = Animated.timing(this.combineAnim4, {
+      toValue: 80,
+      duration: 2000
+    })
+    Animated.loop(Animated.sequence([anim1, anim2, anim3, anim4])).start()
+  }
+
+  render() {
+    return (
+      <Animated.View
+        style={{
+          marginLeft: this.combineAnim1,
+          marginBottom: this.combineAnim2,
+          marginRight: this.combineAnim3,
+          marginTop: this.combineAnim4
+        }}
+      >
         {this.props.children}
       </Animated.View>
     )
