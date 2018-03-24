@@ -154,11 +154,11 @@ export default class ProfileScreen extends Component {
             <Text style={styles.textBtn}>FADE OUT</Text>
           </TouchableOpacity>
         </View>
-        <View
-          onPress={() => this.setState({ whichBtnClick: 'bounce' })}
-          style={{ flexDirection: 'row' }}
-        >
-          <TouchableOpacity style={styles.btn}>
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity
+            onPress={() => this.setState({ whichBtnClick: 'bounce' })}
+            style={styles.btn}
+          >
             <Text style={styles.textBtn}>BOUNCE</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -193,10 +193,11 @@ class ZoomInView extends Component {
     this.zoomAnim = new Animated.Value(0)
   }
   componentDidMount() {
-    Animated.timing(this.zoomAnim, {
+    const anim = Animated.timing(this.zoomAnim, {
       toValue: 100,
       duration: 2000
-    }).start()
+    })
+    Animated.loop(anim).start()
   }
   render() {
     const width = this.zoomAnim
@@ -222,10 +223,11 @@ class ZoomOutView extends Component {
   }
 
   componentDidMount() {
-    Animated.timing(this.zoomAnim, {
+    const anim = Animated.timing(this.zoomAnim, {
       toValue: 0,
       duration: 2000
-    }).start()
+    })
+    Animated.loop(anim).start()
   }
 
   render() {
@@ -252,10 +254,11 @@ class FadeInView extends Component {
   }
 
   componentDidMount() {
-    Animated.timing(this.fadeAnim, {
+    const anim = Animated.timing(this.fadeAnim, {
       toValue: 1,
       duration: 2000
-    }).start()
+    })
+    Animated.loop(anim).start()
   }
 
   render() {
@@ -274,10 +277,11 @@ class FadeOutView extends Component {
   }
 
   componentDidMount() {
-    Animated.timing(this.fadeAnim, {
+    const anim = Animated.timing(this.fadeAnim, {
       toValue: 0,
       duration: 2000
-    }).start()
+    })
+    Animated.loop(anim).start()
   }
 
   render() {
@@ -292,14 +296,15 @@ class FadeOutView extends Component {
 class SlideUpView extends Component {
   constructor(props) {
     super(props)
-    this.slideUpAnim = new Animated.Value(-50)
+    this.slideUpAnim = new Animated.Value(-80)
   }
 
   componentDidMount() {
-    Animated.timing(this.slideUpAnim, {
-      toValue: 50,
+    const anim = Animated.timing(this.slideUpAnim, {
+      toValue: 80,
       duration: 2000
-    }).start()
+    })
+    Animated.loop(anim).start()
   }
 
   render() {
@@ -320,10 +325,11 @@ class MoveView extends Component {
   }
 
   componentDidMount() {
-    Animated.timing(this.moveAnim, {
+    const anim = Animated.timing(this.moveAnim, {
       toValue: 100,
       duration: 2000
-    }).start()
+    })
+    Animated.loop(anim).start()
   }
 
   render() {
@@ -344,10 +350,11 @@ class RotateView extends Component {
   }
 
   componentDidMount() {
-    Animated.timing(this.rotateAnim, {
+    const anim = Animated.timing(this.rotateAnim, {
       toValue: 1,
       duration: 2000
-    }).start()
+    })
+    Animated.loop(anim).start()
   }
 
   render() {
@@ -368,22 +375,21 @@ class RotateView extends Component {
 class BounceView extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      bounceAnim: new Animated.Value(0.3)
-    }
+
+    this.bounceAnim = new Animated.Value(160)
   }
 
   componentDidMount() {
-    this.state.bounceAnim.setValue(0.3)
-    Animated.spring(this.state.bounceAnim, {
-      toValue: 1,
-      friction: 1
-    }).start()
+    const anim = Animated.spring(this.bounceAnim, {
+      toValue: -20,
+      friction: 1.2
+    })
+    Animated.loop(anim).start()
   }
 
   render() {
     return (
-      <Animated.View style={{ transform: [{ scale: this.state.bounceAnim }] }}>
+      <Animated.View style={{ marginBottom: this.bounceAnim }}>
         {this.props.children}
       </Animated.View>
     )
