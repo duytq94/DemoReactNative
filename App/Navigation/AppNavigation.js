@@ -9,7 +9,6 @@ import AsyncStorageScreen from '../Containers/AsyncStorage/AsyncStorage.Screen'
 import MapScreen from '../Containers/Map/Map.Screen'
 import WebScreen from '../Containers/Web/Web.Screen'
 import TimeScreen from '../Containers/Time/Time.Screen'
-import FacebookScreen from '../Containers/Facebook/Facebook.Screen'
 import ModalScreen from '../Containers/Modal/Modal.Screen'
 import LaunchScreen from '../Containers/Launch/Launch.Screen'
 import AnimationScreen from '../Containers/Animation/Animation.Screen'
@@ -29,14 +28,13 @@ const PrimaryNav = StackNavigator(
     MapScreen: { screen: MapScreen },
     WebScreen: { screen: WebScreen },
     TimeScreen: { screen: TimeScreen },
-    FacebookScreen: { screen: FacebookScreen },
     ModalScreen: { screen: ModalScreen },
     AnimationScreen: { screen: AnimationScreen }
   },
   {
     // Default config for all screens
     headerMode: 'none',
-    initialRouteName: 'AnimationScreen',
+    initialRouteName: 'LaunchScreen',
     navigationOptions: {
       headerStyle: styles.header
     }

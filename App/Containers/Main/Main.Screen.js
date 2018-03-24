@@ -1,8 +1,39 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  BackHandler,
+  Alert
+} from 'react-native'
 import styles from './Main.Style'
 
 export default class MainScreen extends Component {
+  constructor(props) {
+    super(props)
+    BackHandler.addEventListener('hardwareBackPress', function() {
+      Alert.alert(
+        'Exit app',
+        'Are you sure to exit?',
+        [
+          {
+            text: 'Cancel',
+            style: 'cancel'
+          },
+          {
+            text: 'OK',
+            onPress: () => BackHandler.exitApp()
+          }
+        ],
+        {
+          cancelable: false
+        }
+      )
+      return true
+    })
+  }
+
   render() {
     return (
       <View style={styles.viewContainer}>
@@ -91,15 +122,6 @@ export default class MainScreen extends Component {
               }}
             >
               <Text style={styles.textBtn}>Time Screen</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => {
-                this.props.navigation.navigate('FacebookScreen', {})
-              }}
-            >
-              <Text style={styles.textBtn}>FacebookScreen</Text>
             </TouchableOpacity>
 
             <TouchableOpacity

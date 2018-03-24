@@ -64,7 +64,7 @@ export default class MapScreen extends Component {
   async getDirection(from, to) {
     try {
       let resp = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${from}&destination=${to}&key=AIzaSyBNgfNRXRU2kRgbW92vjq38_ryPSiCJT5Y`
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${from}&destination=${to}&key=AIzaSyAwc_YF6Fi1WUq3l-9X3l9pooLQ6_s4NOo`
       )
 
       let respJson = await resp.json()
