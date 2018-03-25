@@ -108,8 +108,8 @@ export default class MapScreen extends Component {
           >
             <MapView.Marker
               coordinate={this.state.markerCoord}
-              title="title test"
-              description="description test"
+              title="Destination"
+              description="Your current location to here"
             />
 
             <MapView.Polyline

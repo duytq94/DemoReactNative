@@ -222,18 +222,18 @@ export default class ProfileScreen extends Component {
 class ZoomInView extends Component {
   constructor(props) {
     super(props)
-    this.zoomAnim = new Animated.Value(0)
+    this.zoomInAnim = new Animated.Value(0)
   }
   componentDidMount() {
-    const anim = Animated.timing(this.zoomAnim, {
+    const anim = Animated.timing(this.zoomInAnim, {
       toValue: 100,
       duration: 2000
     })
     Animated.loop(anim).start()
   }
   render() {
-    const width = this.zoomAnim
-    const height = this.zoomAnim
+    const width = this.zoomInAnim
+    const height = this.zoomInAnim
     return (
       <Animated.View
         style={{
@@ -251,11 +251,11 @@ class ZoomInView extends Component {
 class ZoomOutView extends Component {
   constructor(props) {
     super(props)
-    this.zoomAnim = new Animated.Value(100)
+    this.zoomOutAnim = new Animated.Value(100)
   }
 
   componentDidMount() {
-    const anim = Animated.timing(this.zoomAnim, {
+    const anim = Animated.timing(this.zoomOutAnim, {
       toValue: 0,
       duration: 2000
     })
@@ -263,8 +263,8 @@ class ZoomOutView extends Component {
   }
 
   render() {
-    const width = this.zoomAnim
-    const height = this.zoomAnim
+    const width = this.zoomOutAnim
+    const height = this.zoomOutAnim
     return (
       <Animated.View
         style={{
