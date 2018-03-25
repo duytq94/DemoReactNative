@@ -16,6 +16,8 @@
 
 ## Screenshot:
 
+| <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="30%" width="30%"> | <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="30%" width="30%"> | <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="30%" width="30%"> |
+
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="30%" width="30%">
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/AnimationScreen.jpg" height="30%" width="30%">
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/ListScreen.jpg" height="30%" width="30%">
