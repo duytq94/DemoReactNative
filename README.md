@@ -16,14 +16,14 @@
 
 ## Screenshot:
 
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="20%" width="20%">
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/AnimationScreen.jpg" height="20%" width="20%">
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/ListScreen.jpg" height="20%" width="20%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="30%" width="30%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/AnimationScreen.jpg" height="30%" width="30%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/ListScreen.jpg" height="30%" width="30%">
 
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/ProfileScreen.jpg" height="20%" width="20%">
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/AsyncStorageScreen.jpg" height="20%" width="20%">
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/MapScreen.jpg" height="20%" width="20%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/ProfileScreen.jpg" height="30%" width="30%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/AsyncStorageScreen.jpg" height="30%" width="30%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/MapScreen.jpg" height="30%" width="30%">
 
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/WebScreen.jpg" height="20%" width="20%">
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/TimeScreen.jpg" height="20%" width="20%">
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/DialogScreen.jpg" height="20%" width="20%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/WebScreen.jpg" height="30%" width="30%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/TimeScreen.jpg" height="30%" width="30%">
+<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/DialogScreen.jpg" height="30%" width="30%">
