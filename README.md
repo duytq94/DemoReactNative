@@ -3,7 +3,7 @@
 ## App include:
 
 * FetchApi Screen - Get data from local, from internet through redux.
-* Animation Scren - Some animations simple.
+* Animation Screen - Some animations simple.
 * List Screen - Get list questions from stack overflow and show on list
 * Tab Screen - Device a screen to 2 tabs
 * Profile Screen - Screen with some field input like an signup account form
