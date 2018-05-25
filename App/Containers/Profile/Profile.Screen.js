@@ -195,7 +195,7 @@ export default class ProfileScreen extends Component {
             </View>
 
             <View style={styles.viewItemInput}>
-              <Text style={styles.textTitleInput}>Aboute me</Text>
+              <Text style={styles.textTitleInput}>About me</Text>
               <TextInput
                 ref="aboutMeInput"
                 style={styles.textInput}
