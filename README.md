@@ -14,7 +14,7 @@
 * Modal(Dialog) Screen - How to make a dialog
 * And more screen will be update...
 
-## Screenshot:
+## Screenshots:
 
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="30%" width="30%">
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/AnimationScreen.jpg" height="30%" width="30%">
