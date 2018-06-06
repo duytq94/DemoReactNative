@@ -97,14 +97,14 @@ export default class MainScreen extends Component {
               <Text style={styles.textBtn}>AsyncStorage Screen</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={styles.button}
               onPress={() => {
                 this.props.navigation.navigate('MapScreen', {})
               }}
             >
               <Text style={styles.textBtn}>Map Screen</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity
               style={styles.button}

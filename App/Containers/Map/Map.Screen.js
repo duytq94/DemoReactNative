@@ -1,154 +1,154 @@
-import React, { Component } from 'react'
-import {
-  View,
-  Text,
-  Image,
-  BackHandler,
-  TextInput,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  ScrollView,
-  ActivityIndicator
-} from 'react-native'
-import MapView from 'react-native-maps'
-import Polyline from '@mapbox/polyline'
-import Toast from 'react-native-simple-toast'
+// import React, { Component } from 'react'
+// import {
+//   View,
+//   Text,
+//   Image,
+//   BackHandler,
+//   TextInput,
+//   TouchableOpacity,
+//   KeyboardAvoidingView,
+//   ScrollView,
+//   ActivityIndicator
+// } from 'react-native'
+// import MapView from 'react-native-maps'
+// import Polyline from '@mapbox/polyline'
+// import Toast from 'react-native-simple-toast'
 
-import styles from './Map.Style'
-import images from '../../Themes/Images'
+// import styles from './Map.Style'
+// import images from '../../Themes/Images'
 
-export default class MapScreen extends Component {
-  constructor(props) {
-    super(props)
-    backPress = this.handleBackPress.bind(this)
-    this.state = {
-      coords: [],
-      toolbarHeight: 47,
-      markerCoord: { latitude: 10.8015, longitude: 106.653 },
-      isLoading: false
-    }
-  }
+// export default class MapScreen extends Component {
+//   constructor(props) {
+//     super(props)
+//     backPress = this.handleBackPress.bind(this)
+//     this.state = {
+//       coords: [],
+//       toolbarHeight: 47,
+//       markerCoord: { latitude: 10.8015, longitude: 106.653 },
+//       isLoading: false
+//     }
+//   }
 
-  componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', backPress)
+//   componentWillMount() {
+//     BackHandler.addEventListener('hardwareBackPress', backPress)
 
-    // Rerender view so map can show button "my location"
-    setTimeout(() => this.setState({ toolbarHeight: 48 }), 500)
+//     // Rerender view so map can show button "my location"
+//     setTimeout(() => this.setState({ toolbarHeight: 48 }), 500)
 
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          error: null
-        })
-      },
-      error => {
-        this.setState({
-          error: error.message
-        })
-      },
-      { enableHighAccuracy: false, timeout: 10000 }
-    )
-  }
+//     navigator.geolocation.getCurrentPosition(
+//       position => {
+//         this.setState({
+//           latitude: position.coords.latitude,
+//           longitude: position.coords.longitude,
+//           error: null
+//         })
+//       },
+//       error => {
+//         this.setState({
+//           error: error.message
+//         })
+//       },
+//       { enableHighAccuracy: false, timeout: 10000 }
+//     )
+//   }
 
-  componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', backPress)
-  }
+//   componentWillUnmount() {
+//     BackHandler.removeEventListener('hardwareBackPress', backPress)
+//   }
 
-  handleBackPress() {
-    this.props.navigation.goBack()
-    return true
-  }
+//   handleBackPress() {
+//     this.props.navigation.goBack()
+//     return true
+//   }
 
-  async getDirection(from, to) {
-    try {
-      let resp = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${from}&destination=${to}&key=AIzaSyAwc_YF6Fi1WUq3l-9X3l9pooLQ6_s4NOo`
-      )
+//   async getDirection(from, to) {
+//     try {
+//       let resp = await fetch(
+//         `https://maps.googleapis.com/maps/api/directions/json?origin=${from}&destination=${to}&key=AIzaSyAwc_YF6Fi1WUq3l-9X3l9pooLQ6_s4NOo`
+//       )
 
-      let respJson = await resp.json()
-      let points = Polyline.decode(respJson.routes[0].overview_polyline.points)
-      let coords = points.map((point, index) => {
-        return {
-          latitude: point[0],
-          longitude: point[1]
-        }
-      })
-      this.setState({ coords: coords, isLoading: false })
-      return coords
-    } catch (error) {
-      Toast.show(`${error}`)
-      this.setState({ isLoading: false })
-    }
-  }
+//       let respJson = await resp.json()
+//       let points = Polyline.decode(respJson.routes[0].overview_polyline.points)
+//       let coords = points.map((point, index) => {
+//         return {
+//           latitude: point[0],
+//           longitude: point[1]
+//         }
+//       })
+//       this.setState({ coords: coords, isLoading: false })
+//       return coords
+//     } catch (error) {
+//       Toast.show(`${error}`)
+//       this.setState({ isLoading: false })
+//     }
+//   }
 
-  render() {
-    return (
-      <View style={styles.viewContainer}>
-        <View style={[styles.toolbar, { height: this.state.toolbarHeight }]}>
-          <TouchableOpacity onPress={() => this.handleBackPress()}>
-            <Image style={styles.icBack} source={images.ic_back} />
-          </TouchableOpacity>
-          <Text style={styles.titleToolbar}>MAP</Text>
-          <View style={styles.icBack} />
-        </View>
+//   render() {
+//     return (
+//       <View style={styles.viewContainer}>
+//         <View style={[styles.toolbar, { height: this.state.toolbarHeight }]}>
+//           <TouchableOpacity onPress={() => this.handleBackPress()}>
+//             <Image style={styles.icBack} source={images.ic_back} />
+//           </TouchableOpacity>
+//           <Text style={styles.titleToolbar}>MAP</Text>
+//           <View style={styles.icBack} />
+//         </View>
 
-        <View style={{ flex: 1 }}>
-          <MapView
-            style={{ flex: 1 }}
-            region={{
-              latitude: 10.8015,
-              longitude: 106.653,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421
-            }}
-            showsMyLocationButton={true}
-            showsUserLocation={true}
-          >
-            <MapView.Marker
-              coordinate={this.state.markerCoord}
-              title="Destination"
-              description="Your current location to here"
-            />
+//         <View style={{ flex: 1 }}>
+//           <MapView
+//             style={{ flex: 1 }}
+//             region={{
+//               latitude: 10.8015,
+//               longitude: 106.653,
+//               latitudeDelta: 0.0922,
+//               longitudeDelta: 0.0421
+//             }}
+//             showsMyLocationButton={true}
+//             showsUserLocation={true}
+//           >
+//             <MapView.Marker
+//               coordinate={this.state.markerCoord}
+//               title="Destination"
+//               description="Your current location to here"
+//             />
 
-            <MapView.Polyline
-              coordinates={this.state.coords}
-              strokeWidth={3}
-              strokeColor="red"
-            />
-          </MapView>
-        </View>
+//             <MapView.Polyline
+//               coordinates={this.state.coords}
+//               strokeWidth={3}
+//               strokeColor="red"
+//             />
+//           </MapView>
+//         </View>
 
-        <Text style={{ color: 'black', textAlign: 'center', marginTop: 10 }}>
-          Your latitude: {this.state.latitude}
-        </Text>
-        <Text style={{ color: 'black', textAlign: 'center' }}>
-          Your longitude: {this.state.longitude}
-        </Text>
-        {this.state.error ? (
-          <Text style={{ color: 'black', textAlign: 'center' }}>
-            Error: {this.state.error}
-          </Text>
-        ) : null}
+//         <Text style={{ color: 'black', textAlign: 'center', marginTop: 10 }}>
+//           Your latitude: {this.state.latitude}
+//         </Text>
+//         <Text style={{ color: 'black', textAlign: 'center' }}>
+//           Your longitude: {this.state.longitude}
+//         </Text>
+//         {this.state.error ? (
+//           <Text style={{ color: 'black', textAlign: 'center' }}>
+//             Error: {this.state.error}
+//           </Text>
+//         ) : null}
 
-        <TouchableOpacity
-          style={styles.btnDirection}
-          onPress={() => {
-            this.setState({ isLoading: true })
-            this.getDirection(
-              `${this.state.latitude},${this.state.longitude}`,
-              '10.8015,106.653'
-            )
-          }}
-        >
-          <Text style={styles.textBtnDirection}>Get direction</Text>
-        </TouchableOpacity>
+//         <TouchableOpacity
+//           style={styles.btnDirection}
+//           onPress={() => {
+//             this.setState({ isLoading: true })
+//             this.getDirection(
+//               `${this.state.latitude},${this.state.longitude}`,
+//               '10.8015,106.653'
+//             )
+//           }}
+//         >
+//           <Text style={styles.textBtnDirection}>Get direction</Text>
+//         </TouchableOpacity>
 
-        {this.state.isLoading ? (
-          <ActivityIndicator size="large" style={styles.loading} />
-        ) : null}
-      </View>
-    )
-  }
-}
+//         {this.state.isLoading ? (
+//           <ActivityIndicator size="large" style={styles.loading} />
+//         ) : null}
+//       </View>
+//     )
+//   }
+// }
