@@ -36,7 +36,7 @@ const PrimaryNav = StackNavigator(
   {
     // Default config for all screens
     headerMode: 'none',
-    initialRouteName: 'LaunchScreen',
+    initialRouteName: 'RestaurantAnimationScreen',
     navigationOptions: {
       headerStyle: styles.header
     }

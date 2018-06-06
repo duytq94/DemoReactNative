@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
   viewContainer: {
     flex: 1,
+    backgroundColor: '#f8f9fb',
   },
   toolbar: {
     width: '100%',
@@ -23,12 +24,16 @@ export default StyleSheet.create({
     textAlign: 'center',
     flex: 1,
   },
+
+  // Tab indicator
   tabIndicator: {
     backgroundColor: '#f53970',
     width: '100%',
     height: 40,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   viewWrapItemTabIndicator: {
     flexDirection: 'row',
@@ -44,5 +49,82 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 13,
     marginLeft: 8,
+  },
+
+  // Text entrance
+  textEntrance: {
+    color: '#575869',
+    fontWeight: 'bold',
+  },
+  viewWrapTextEntrance: {
+    alignSelf: 'center',
+    marginTop: 30,
+    marginBottom: 30,
+  },
+
+  viewWrapTable: {
+    height: 350,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+
+  // Big table
+  viewWrapTwoTopChair: {
+    flexDirection: 'row',
+    width: 120,
+    justifyContent: 'space-around',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  viewWrapTableRow1: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  imgChairTop: {
+    width: 40,
+    height: 20,
+  },
+  imgChairBottom: {
+    width: 40,
+    height: 20,
+  },
+  imgBigTable: {
+    width: 120,
+    height: 60,
+  },
+  viewWrapTextBigTable: {
+    position: 'absolute',
+    paddingTop: 5,
+    paddingLeft: 20,
+  },
+  textNumber: {
+    color: '#575869',
+    fontWeight: 'bold',
+  },
+  textStatus: {
+    color: '#575869',
+    fontWeight: 'bold',
+    fontSize: 8,
+    marginTop: 10,
+  },
+
+  // Small table
+  imgSmallTable: {
+    width: 70,
+    height: 60,
+  },
+  viewWrapTopChair: {
+    flexDirection: 'row',
+    width: 70,
+    justifyContent: 'space-around',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  viewWrapTextSmallTable: {
+    position: 'absolute',
+    paddingTop: 5,
+    paddingLeft: 15,
   },
 })

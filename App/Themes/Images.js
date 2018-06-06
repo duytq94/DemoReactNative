@@ -29,6 +29,12 @@ const images = {
   ic_home: require('../Images/ic_home.png'),
   ic_menu: require('../Images/ic_menu.png'),
   ic_seat: require('../Images/ic_seat.png'),
+  chair_top: require('../Images/chair_top.png'),
+  chair_bottom: require('../Images/chair_bottom.png'),
+  table_big_green: require('../Images/table_big_green.png'),
+  table_big_pink: require('../Images/table_big_pink.png'),
+  table_small_green: require('../Images/table_small_green.png'),
+  table_small_yellow: require('../Images/table_small_yellow.png'),
 }
 
 export default images
