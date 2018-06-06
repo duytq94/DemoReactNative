@@ -25,7 +25,10 @@ const images = {
   ic_avatar: require('../Images/ic_avatar.png'),
   ic_camera: require('../Images/ic_camera.png'),
   bg_avatar: require('../Images/bg_avatar.png'),
-  logo_uit: require('../Images/logo_uit.png')
+  logo_uit: require('../Images/logo_uit.png'),
+  ic_home: require('../Images/ic_home.png'),
+  ic_menu: require('../Images/ic_menu.png'),
+  ic_seat: require('../Images/ic_seat.png'),
 }
 
 export default images

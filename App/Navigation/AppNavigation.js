@@ -12,6 +12,7 @@ import TimeScreen from '../Containers/Time/Time.Screen'
 import ModalScreen from '../Containers/Modal/Modal.Screen'
 import LaunchScreen from '../Containers/Launch/Launch.Screen'
 import AnimationScreen from '../Containers/Animation/Animation.Screen'
+import RestaurantAnimationScreen from '../Containers/RestaurantAnimation/RestaurantAnimation.Screen'
 
 import styles from './Styles/NavigationStyles'
 
@@ -29,7 +30,8 @@ const PrimaryNav = StackNavigator(
     WebScreen: { screen: WebScreen },
     TimeScreen: { screen: TimeScreen },
     ModalScreen: { screen: ModalScreen },
-    AnimationScreen: { screen: AnimationScreen }
+    AnimationScreen: { screen: AnimationScreen },
+    RestaurantAnimationScreen: { screen: RestaurantAnimationScreen },
   },
   {
     // Default config for all screens
