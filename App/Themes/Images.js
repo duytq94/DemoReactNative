@@ -35,6 +35,10 @@ const images = {
   table_big_pink: require('../Images/table_big_pink.png'),
   table_small_green: require('../Images/table_small_green.png'),
   table_small_yellow: require('../Images/table_small_yellow.png'),
+  ic_book: require('../Images/ic_book.png'),
+  ic_clock: require('../Images/ic_clock.png'),
+  ic_add: require('../Images/ic_add.png'),
+  ic_cancel: require('../Images/ic_cancel.png'),
 }
 
 export default images

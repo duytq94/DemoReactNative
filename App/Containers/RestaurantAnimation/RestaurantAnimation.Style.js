@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
   viewContainer: {
@@ -127,4 +127,37 @@ export default StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 15,
   },
+
+  // Icon bottom menu
+  viewWrapBottomMenu: {
+    flexDirection: 'column',
+    marginLeft: 20,
+    marginRight: 20,
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  viewWrapIconBottomMenu: {
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'space-around'
+  },
+  imgIconBottomMenu: {
+    width: 40,
+    height: 40,
+  },
+  viewWrapTextBottomMenu: {
+    flexDirection: 'row',
+    position: 'absolute',
+    justifyContent: 'space-around',
+    width: '100%'
+  },
+  viewWrapTextBottomMenu2: {
+    width: 80, alignItems: 'center',
+  },
+  textBottomMenu: {
+    color: '#575869',
+    fontWeight: 'bold',
+    fontSize: 12
+  }
 })
