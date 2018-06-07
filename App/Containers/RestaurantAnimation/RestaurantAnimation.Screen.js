@@ -207,12 +207,12 @@ export default class RestaurantAnimationScreen extends Component {
                       />
                       <View style={styles.viewWrapTextBigTable}>
                         <Text
-                          style={[styles.textNumber, {color: this.state.whichTable === 1 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textNumber, {color: this.state.whichTable === 1 ? '#ffffff' : '#575869'}]}
                         >
                           01
                         </Text>
                         <Text
-                          style={[styles.textStatus, {color: this.state.whichTable === 1 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textStatus, {color: this.state.whichTable === 1 ? '#ffffff' : '#575869'}]}
                         >
                           AVAILABLE
                         </Text>
@@ -252,12 +252,12 @@ export default class RestaurantAnimationScreen extends Component {
                       />
                       <View style={styles.viewWrapTextBigTable}>
                         <Text
-                          style={[styles.textNumber, {color: this.state.whichTable === 2 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textNumber, {color: this.state.whichTable === 2 ? '#ffffff' : '#575869'}]}
                         >
                           02
                         </Text>
                         <Text
-                          style={[styles.textStatus, {color: this.state.whichTable === 2 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textStatus, {color: this.state.whichTable === 2 ? '#ffffff' : '#575869'}]}
                         >
                           AVAILABLE
                         </Text>
@@ -299,12 +299,12 @@ export default class RestaurantAnimationScreen extends Component {
                       />
                       <View style={styles.viewWrapTextSmallTable}>
                         <Text
-                          style={[styles.textNumber, {color: this.state.whichTable === 3 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textNumber, {color: this.state.whichTable === 3 ? '#ffffff' : '#575869'}]}
                         >
                           03
                         </Text>
                         <Text
-                          style={[styles.textStatus, {color: this.state.whichTable === 3 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textStatus, {color: this.state.whichTable === 3 ? '#ffffff' : '#575869'}]}
                         >
                           TAKEN
                         </Text>
@@ -342,12 +342,12 @@ export default class RestaurantAnimationScreen extends Component {
                       />
                       <View style={styles.viewWrapTextSmallTable}>
                         <Text
-                          style={[styles.textNumber, {color: this.state.whichTable === 4 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textNumber, {color: this.state.whichTable === 4 ? '#ffffff' : '#575869'}]}
                         >
                           04
                         </Text>
                         <Text
-                          style={[styles.textStatus, {color: this.state.whichTable === 4 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textStatus, {color: this.state.whichTable === 4 ? '#ffffff' : '#575869'}]}
                         >
                           WAIT
                         </Text>
@@ -385,12 +385,12 @@ export default class RestaurantAnimationScreen extends Component {
                       />
                       <View style={styles.viewWrapTextSmallTable}>
                         <Text
-                          style={[styles.textNumber, {color: this.state.whichTable === 5 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textNumber, {color: this.state.whichTable === 5 ? '#ffffff' : '#575869'}]}
                         >
                           05
                         </Text>
                         <Text
-                          style={[styles.textStatus, {color: this.state.whichTable === 5 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textStatus, {color: this.state.whichTable === 5 ? '#ffffff' : '#575869'}]}
                         >
                           AVAILABLE
                         </Text>
@@ -432,12 +432,12 @@ export default class RestaurantAnimationScreen extends Component {
                       />
                       <View style={styles.viewWrapTextBigTable}>
                         <Text
-                          style={[styles.textNumber, {color: this.state.whichTable === 6 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textNumber, {color: this.state.whichTable === 6 ? '#ffffff' : '#575869'}]}
                         >
                           06
                         </Text>
                         <Text
-                          style={[styles.textStatus, {color: this.state.whichTable === 6 ? '#ffffff' : '#000000'}]}
+                          style={[styles.textStatus, {color: this.state.whichTable === 6 ? '#ffffff' : '#575869'}]}
                         >
                           TAKEN
                         </Text>
@@ -473,10 +473,10 @@ export default class RestaurantAnimationScreen extends Component {
                       <Image style={[styles.imgBigTable, {tintColor: this.state.whichTable === 7 ? '#7DD5AF' : null}]}
                              source={images.table_big_green} resizeMode="contain"/>
                       <View style={styles.viewWrapTextBigTable}>
-                        <Text style={[styles.textNumber, {color: this.state.whichTable === 7 ? '#ffffff' : '#000000'}]}>
+                        <Text style={[styles.textNumber, {color: this.state.whichTable === 7 ? '#ffffff' : '#575869'}]}>
                           07
                         </Text>
-                        <Text style={[styles.textStatus, {color: this.state.whichTable === 7 ? '#ffffff' : '#000000'}]}
+                        <Text style={[styles.textStatus, {color: this.state.whichTable === 7 ? '#ffffff' : '#575869'}]}
                         >
                           AVAILABLE
                         </Text>

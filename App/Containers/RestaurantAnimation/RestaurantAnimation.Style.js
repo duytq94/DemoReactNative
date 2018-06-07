@@ -104,9 +104,8 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   textStatus: {
-    color: '#575869',
     fontWeight: 'bold',
-    fontSize: 8,
+    fontSize: 9,
     marginTop: 10,
   },
 
