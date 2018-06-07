@@ -66,9 +66,10 @@ export default class RestaurantAnimationScreen extends Component {
         isBtnTablePressed: true,
       });
 
-      // Have to set value from the start so animation can run again
+      // Have to set value so animation can run multiple times
       this.zoomTableAnim.setValue(0);
       this.fadeOutTableAnim.setValue(1.0);
+      this.fadeOutTextEntranceAnim.setValue(1.0);
       this.comeUpIconBottomMenuAnim1.setValue(0);
       this.comeUpIconBottomMenuAnim2.setValue(0);
       this.comeUpIconBottomMenuAnim3.setValue(0);
@@ -121,32 +122,90 @@ export default class RestaurantAnimationScreen extends Component {
     }
   };
 
-  onIconCancelPress() {
+  onIconCancelPress = () => {
+    this.zoomTableAnim.setValue(1);
+    this.fadeOutTableAnim.setValue(0.2);
+    this.fadeOutTextEntranceAnim.setValue(0.0);
+    this.comeUpIconBottomMenuAnim1.setValue(1);
+    this.comeUpIconBottomMenuAnim2.setValue(1);
+    this.comeUpIconBottomMenuAnim3.setValue(1);
+    this.comeUpIconBottomMenuAnim4.setValue(1);
+    this.comeUpTextBottomMenuAnim.setValue(15);
+
+    Animated.parallel([
+      Animated.timing(this.zoomTableAnim, {
+        toValue: 0,
+        duration: 1000,
+      }),
+      Animated.timing(this.fadeOutTableAnim, {
+        toValue: 1.0,
+        duration: 800,
+      }),
+      Animated.timing(this.fadeOutTextEntranceAnim, {
+        toValue: 1.0,
+        duration: 800,
+      }),
+      Animated.timing(this.comeUpIconBottomMenuAnim1, {
+        toValue: 0,
+        duration: 600,
+        easing: Easing.ease
+      }),
+      Animated.timing(this.comeUpIconBottomMenuAnim2, {
+        toValue: 0,
+        duration: 600,
+        easing: Easing.ease,
+        delay: 50,
+      }),
+      Animated.timing(this.comeUpIconBottomMenuAnim3, {
+        toValue: 0,
+        duration: 600,
+        easing: Easing.ease,
+        delay: 100,
+      }),
+      Animated.timing(this.comeUpIconBottomMenuAnim4, {
+        toValue: 0,
+        duration: 600,
+        easing: Easing.ease,
+        delay: 150,
+      }),
+      Animated.timing(this.comeUpTextBottomMenuAnim, {
+        toValue: -20,
+        duration: 300,
+        easing: Easing.ease,
+        delay: 150,
+      }),
+    ]).start(this.onAnimationCompleted)
+
+    // Notice that we can call setState in here because
+    // setState will setValue immediately and then animation can check value to revert
+  };
+
+  onAnimationCompleted = () => {
     this.setState({
-      isBtnTablePressed: false
+      isBtnTablePressed: false,
+      whichTable: 0,
     });
-    console.log(this.state.isBtnTablePressed)
   };
 
   render() {
-    scaleZoomTable = this.zoomTableAnim.interpolate({
+    let scaleZoomTable = this.zoomTableAnim.interpolate({
       inputRange: [0, 0.2, 0.8, 1],
       outputRange: [1.0, 0.8, 1.2, 1.0],
     });
 
-    comeIconUpBottomMenu1 = this.comeUpIconBottomMenuAnim1.interpolate({
+    let comeIconUpBottomMenu1 = this.comeUpIconBottomMenuAnim1.interpolate({
       inputRange: [0, 0.5, 0.75, 1],
       outputRange: [-40, 55, 15, 35],
     });
-    comeIconUpBottomMenu2 = this.comeUpIconBottomMenuAnim2.interpolate({
+    let comeIconUpBottomMenu2 = this.comeUpIconBottomMenuAnim2.interpolate({
       inputRange: [0, 0.5, 0.75, 1],
       outputRange: [-40, 50, 20, 35],
     });
-    comeIconUpBottomMenu3 = this.comeUpIconBottomMenuAnim3.interpolate({
+    let comeIconUpBottomMenu3 = this.comeUpIconBottomMenuAnim3.interpolate({
       inputRange: [0, 0.5, 0.75, 1],
       outputRange: [-40, 45, 25, 35],
     });
-    comeIconUpBottomMenu4 = this.comeUpIconBottomMenuAnim4.interpolate({
+    let comeIconUpBottomMenu4 = this.comeUpIconBottomMenuAnim4.interpolate({
       inputRange: [0, 0.5, 0.75, 1],
       outputRange: [-40, 40, 30, 35],
     });
@@ -522,7 +581,9 @@ export default class RestaurantAnimationScreen extends Component {
               <Image style={styles.imgIconBottomMenu} source={images.ic_clock}/>
             </Animated.View>
             <Animated.View style={{marginBottom: comeIconUpBottomMenu4}}>
-              <Image style={styles.imgIconBottomMenu} source={images.ic_cancel}/>
+              <TouchableWithoutFeedback onPress={this.onIconCancelPress}>
+                <Image style={styles.imgIconBottomMenu} source={images.ic_cancel}/>
+              </TouchableWithoutFeedback>
             </Animated.View>
           </View>
 
@@ -530,26 +591,21 @@ export default class RestaurantAnimationScreen extends Component {
           <View style={styles.viewWrapTextBottomMenu}>
             <Animated.View style={{marginBottom: this.comeUpTextBottomMenuAnim, flexDirection: 'row'}}>
 
-              <TouchableWithoutFeedback>
-                <View style={styles.viewWrapTextBottomMenu2}>
-                  <Text style={styles.textBottomMenu}>Book</Text>
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback>
-                <View style={styles.viewWrapTextBottomMenu2}>
-                  <Text style={styles.textBottomMenu}>Order</Text>
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback>
-                <View style={styles.viewWrapTextBottomMenu2}>
-                  <Text style={styles.textBottomMenu}>Reservation</Text>
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback onPress={()=> console.log('aaa')}>
-                <View style={styles.viewWrapTextBottomMenu2}>
-                  <Text style={styles.textBottomMenu}>Cancel</Text>
-                </View>
-              </TouchableWithoutFeedback>
+              <View style={styles.viewWrapTextBottomMenu2}>
+                <Text style={styles.textBottomMenu}>Book</Text>
+              </View>
+
+              <View style={styles.viewWrapTextBottomMenu2}>
+                <Text style={styles.textBottomMenu}>Order</Text>
+              </View>
+
+              <View style={styles.viewWrapTextBottomMenu2}>
+                <Text style={styles.textBottomMenu}>Reservation</Text>
+              </View>
+
+              <View style={styles.viewWrapTextBottomMenu2}>
+                <Text style={styles.textBottomMenu}>Cancel</Text>
+              </View>
 
             </Animated.View>
 
