@@ -26,6 +26,7 @@ export default class RestaurantAnimationScreen extends Component {
 
     this.state = {
       whichTable: 0,
+      isBtnTablePressed: false,
     }
   }
 
@@ -59,62 +60,72 @@ export default class RestaurantAnimationScreen extends Component {
   }
 
   onTablePress = whichTable => {
+    if (!this.state.isBtnTablePressed) {
+      this.setState({
+        whichTable: whichTable,
+        isBtnTablePressed: true,
+      });
+
+      // Have to set value from the start so animation can run again
+      this.zoomTableAnim.setValue(0);
+      this.fadeOutTableAnim.setValue(1.0);
+      this.comeUpIconBottomMenuAnim1.setValue(0);
+      this.comeUpIconBottomMenuAnim2.setValue(0);
+      this.comeUpIconBottomMenuAnim3.setValue(0);
+      this.comeUpIconBottomMenuAnim4.setValue(0);
+      this.comeUpTextBottomMenuAnim.setValue(-20);
+
+      Animated.parallel([
+        Animated.timing(this.zoomTableAnim, {
+          toValue: 1,
+          duration: 1000,
+        }),
+        Animated.timing(this.fadeOutTableAnim, {
+          toValue: 0.2,
+          duration: 800,
+        }),
+        Animated.timing(this.fadeOutTextEntranceAnim, {
+          toValue: 0.0,
+          duration: 800,
+        }),
+        Animated.timing(this.comeUpIconBottomMenuAnim1, {
+          toValue: 1,
+          duration: 600,
+          easing: Easing.ease
+        }),
+        Animated.timing(this.comeUpIconBottomMenuAnim2, {
+          toValue: 1,
+          duration: 600,
+          easing: Easing.ease,
+          delay: 50,
+        }),
+        Animated.timing(this.comeUpIconBottomMenuAnim3, {
+          toValue: 1,
+          duration: 600,
+          easing: Easing.ease,
+          delay: 100,
+        }),
+        Animated.timing(this.comeUpIconBottomMenuAnim4, {
+          toValue: 1,
+          duration: 600,
+          easing: Easing.ease,
+          delay: 150,
+        }),
+        Animated.timing(this.comeUpTextBottomMenuAnim, {
+          toValue: 15,
+          duration: 300,
+          easing: Easing.ease,
+          delay: 150,
+        }),
+      ]).start()
+    }
+  };
+
+  onIconCancelPress() {
     this.setState({
-      whichTable: whichTable,
+      isBtnTablePressed: false
     });
-
-    // Have to set value from the start so animation can run again
-    this.zoomTableAnim.setValue(0);
-    this.fadeOutTableAnim.setValue(1.0);
-    this.comeUpIconBottomMenuAnim1.setValue(0);
-    this.comeUpIconBottomMenuAnim2.setValue(0);
-    this.comeUpIconBottomMenuAnim3.setValue(0);
-    this.comeUpIconBottomMenuAnim4.setValue(0);
-    this.comeUpTextBottomMenuAnim.setValue(-20);
-
-    Animated.parallel([
-      Animated.timing(this.zoomTableAnim, {
-        toValue: 1,
-        duration: 1000,
-      }),
-      Animated.timing(this.fadeOutTableAnim, {
-        toValue: 0.2,
-        duration: 800,
-      }),
-      Animated.timing(this.fadeOutTextEntranceAnim, {
-        toValue: 0.0,
-        duration: 800,
-      }),
-      Animated.timing(this.comeUpIconBottomMenuAnim1, {
-        toValue: 1,
-        duration: 600,
-        easing: Easing.ease
-      }),
-      Animated.timing(this.comeUpIconBottomMenuAnim2, {
-        toValue: 1,
-        duration: 600,
-        easing: Easing.ease,
-        delay: 50,
-      }),
-      Animated.timing(this.comeUpIconBottomMenuAnim3, {
-        toValue: 1,
-        duration: 600,
-        easing: Easing.ease,
-        delay: 100,
-      }),
-      Animated.timing(this.comeUpIconBottomMenuAnim4, {
-        toValue: 1,
-        duration: 600,
-        easing: Easing.ease,
-        delay: 150,
-      }),
-      Animated.timing(this.comeUpTextBottomMenuAnim, {
-        toValue: 15,
-        duration: 300,
-        easing: Easing.ease,
-        delay: 150,
-      }),
-    ]).start()
+    console.log(this.state.isBtnTablePressed)
   };
 
   render() {
@@ -167,6 +178,7 @@ export default class RestaurantAnimationScreen extends Component {
           </View>
         </View>
 
+        {/*Group table*/}
         <Animated.View style={{marginTop: this.dropDownBodyAnim, opacity: this.fadeInBodyanim}}>
           {/*Text "Entrance"*/}
           <Animated.View
@@ -517,10 +529,28 @@ export default class RestaurantAnimationScreen extends Component {
           {/*Text*/}
           <View style={styles.viewWrapTextBottomMenu}>
             <Animated.View style={{marginBottom: this.comeUpTextBottomMenuAnim, flexDirection: 'row'}}>
-              <View style={styles.viewWrapTextBottomMenu2}><Text style={styles.textBottomMenu}>Book</Text></View>
-              <View style={styles.viewWrapTextBottomMenu2}><Text style={styles.textBottomMenu}>Order</Text></View>
-              <View style={styles.viewWrapTextBottomMenu2}><Text style={styles.textBottomMenu}>Reservation</Text></View>
-              <View style={styles.viewWrapTextBottomMenu2}><Text style={styles.textBottomMenu}>Cancel</Text></View>
+
+              <TouchableWithoutFeedback>
+                <View style={styles.viewWrapTextBottomMenu2}>
+                  <Text style={styles.textBottomMenu}>Book</Text>
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback>
+                <View style={styles.viewWrapTextBottomMenu2}>
+                  <Text style={styles.textBottomMenu}>Order</Text>
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback>
+                <View style={styles.viewWrapTextBottomMenu2}>
+                  <Text style={styles.textBottomMenu}>Reservation</Text>
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={()=> console.log('aaa')}>
+                <View style={styles.viewWrapTextBottomMenu2}>
+                  <Text style={styles.textBottomMenu}>Cancel</Text>
+                </View>
+              </TouchableWithoutFeedback>
+
             </Animated.View>
 
           </View>
