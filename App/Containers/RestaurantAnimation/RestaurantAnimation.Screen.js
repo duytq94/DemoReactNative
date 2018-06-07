@@ -24,8 +24,13 @@ export default class RestaurantAnimationScreen extends Component {
     this.comeUpIconBottomMenuAnim4 = new Animated.Value(0);
     this.comeUpTextBottomMenuAnim = new Animated.Value(-20);
 
+    // Animation phrase 3 (zoom out icon bottom menu)
+    this.zoomIconBottomMenu = new Animated.Value(1.0);
+
+
     this.state = {
       whichTable: 0,
+      whichMenuIcon: 0,
       isBtnTablePressed: false,
     }
   }
@@ -178,6 +183,16 @@ export default class RestaurantAnimationScreen extends Component {
 
     // Notice that we can call setState in here because
     // setState will setValue immediately and then animation can check value to revert
+  };
+
+  onOthersIconPress = whichMenuIcon => {
+    this.setState({
+      whichMenuIcon: whichMenuIcon
+    });
+    Animated.timing(this.zoomIconBottomMenu, {
+      toValue: 0.5,
+      duration: 600
+    }).start()
   };
 
   onAnimationCompleted = () => {
@@ -571,15 +586,34 @@ export default class RestaurantAnimationScreen extends Component {
         <View style={styles.viewWrapBottomMenu}>
           {/*Icons*/}
           <View style={styles.viewWrapIconBottomMenu}>
-            <Animated.View style={{marginBottom: comeIconUpBottomMenu1}}>
-              <Image style={styles.imgIconBottomMenu} source={images.ic_book}/>
+
+            <Animated.View style={{
+              marginBottom: comeIconUpBottomMenu1,
+              transform: [{scale: this.state.whichMenuIcon === 1 ? this.zoomIconBottomMenu : 1.0}]
+            }}>
+              <TouchableWithoutFeedback onPress={() => this.onOthersIconPress(1)}>
+                <Image style={styles.imgIconBottomMenu} source={images.ic_book}/>
+              </TouchableWithoutFeedback>
             </Animated.View>
-            <Animated.View style={{marginBottom: comeIconUpBottomMenu2}}>
-              <Image style={styles.imgIconBottomMenu} source={images.ic_add}/>
+
+            <Animated.View style={{
+              marginBottom: comeIconUpBottomMenu1,
+              transform: [{scale: this.state.whichMenuIcon === 2 ? this.zoomIconBottomMenu : 1.0}]
+            }}>
+              <TouchableWithoutFeedback onPress={() => this.onOthersIconPress(2)}>
+                <Image style={styles.imgIconBottomMenu} source={images.ic_add}/>
+              </TouchableWithoutFeedback>
             </Animated.View>
-            <Animated.View style={{marginBottom: comeIconUpBottomMenu3}}>
-              <Image style={styles.imgIconBottomMenu} source={images.ic_clock}/>
+
+            <Animated.View style={{
+              marginBottom: comeIconUpBottomMenu1,
+              transform: [{scale: this.state.whichMenuIcon === 3 ? this.zoomIconBottomMenu : 1.0}]
+            }}>
+              <TouchableWithoutFeedback onPress={() => this.onOthersIconPress(3)}>
+                <Image style={styles.imgIconBottomMenu} source={images.ic_clock}/>
+              </TouchableWithoutFeedback>
             </Animated.View>
+            
             <Animated.View style={{marginBottom: comeIconUpBottomMenu4}}>
               <TouchableWithoutFeedback onPress={this.onIconCancelPress}>
                 <Image style={styles.imgIconBottomMenu} source={images.ic_cancel}/>
