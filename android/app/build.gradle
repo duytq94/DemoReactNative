@@ -106,8 +106,6 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-		 manifestPlaceholders = [onesignal_app_id: "7a7048f4-8bfe-42a9-b52b-e92a30a6b93d",
-                                onesignal_google_project_number: "128164559768"]
     }
     splits {
         abi {
@@ -139,8 +137,7 @@ android {
 }
 
 dependencies {
-	
-	compile project(':react-native-onesignal')
+
     // compile project(':react-native-maps')
     compile project(':react-native-image-picker')
     compile project(':react-native-config')
