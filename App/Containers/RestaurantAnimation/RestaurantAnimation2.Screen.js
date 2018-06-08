@@ -9,10 +9,21 @@ export default class RestaurantAnimation2Screen extends Component {
     super(props);
     backPress = this.handleBackPress.bind(this);
 
+    this.state = {
+      whichPlate: 0,
+      isBtnPlatePress: false,
+      countQuantity: 0,
+    };
+
     // Animation phrase 1
     this.comeUpPlate1 = new Animated.Value(10);
     this.comeUpPlate2 = new Animated.Value(20);
     this.comeUpPlate3 = new Animated.Value(15);
+
+    // Animation phrase 2
+    this.fadeInWhitePlate = new Animated.Value(0);
+    this.zoomInPlate = new Animated.Value(0);
+
   }
 
   componentDidMount() {
@@ -35,6 +46,39 @@ export default class RestaurantAnimation2Screen extends Component {
       }),
     ]).start()
   }
+
+  onPlatePress = (whichPlate) => {
+    this.setState({
+      whichPlate: whichPlate,
+    });
+    console.log(this.state.whichPlate);
+
+    this.fadeInWhitePlate.setValue(0.0);
+    this.zoomInPlate.setValue(1);
+    Animated.parallel([
+      Animated.timing(this.fadeInWhitePlate, {
+        toValue: 1.0,
+        duration: 800
+      }),
+      Animated.timing(this.zoomInPlate, {
+        toValue: 1,
+        duration: 800
+      })
+    ]).start(this.onAnimationPlateSuccess)
+  };
+
+  onAnimationPlateSuccess = () => {
+    this.setState({
+      isBtnPlatePress: true,
+    })
+  };
+
+  onIconAddPress = () => {
+    this.setState({
+      countQuantity: this.state.countQuantity + 1,
+    })
+
+  };
 
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', backPress)
@@ -83,15 +127,39 @@ export default class RestaurantAnimation2Screen extends Component {
           {/*Plate row 1*/}
           <View style={styles.viewWrapPlateRow1}>
             {/*Plate 1*/}
-            <Animated.View style={{marginTop: this.comeUpPlate1}}>
-              <View style={styles.viewWrapPlate}>
-                <Image style={styles.imgPlate} source={images.flan}/>
-                <Text style={styles.textPlate}>Flan</Text>
-                <View style={styles.viewWrapPrice}>
-                  <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
-                  <Text style={styles.textPrice}>$16</Text>
+            <Animated.View style={{marginTop: this.comeUpPlate1, transform: [{scale: 1.1}]}}>
+              <TouchableWithoutFeedback onPress={() => this.onPlatePress(1)}>
+
+                <View style={styles.viewWrapPlate}>
+                  <Image style={styles.imgPlate} source={images.flan}/>
+
+                  {/*Plate white*/}
+                  <View style={styles.viewWrapPlateWhite}>
+                    <Animated.View
+                      style={{opacity: (this.state.whichPlate === 1 && !this.state.isBtnPlatePress) ? this.fadeInWhitePlate : 0}}>
+                      <View style={{justifyContent: 'center'}}>
+                        <Image style={styles.imgPlateWhite} source={images.ic_white_circle}/>
+
+                        <View style={styles.viewWrapContentPlateWhite}>
+                          <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
+                          <Text style={styles.textCount}>{this.state.countQuantity}</Text>
+                          <TouchableWithoutFeedback onPress={this.onIconAddPress}>
+                            <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
+                          </TouchableWithoutFeedback>
+                        </View>
+
+                      </View>
+                    </Animated.View>
+                  </View>
+
+                  <Text style={styles.textPlate}>Flan</Text>
+                  <View style={styles.viewWrapPrice}>
+                    <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
+                    <Text style={styles.textPrice}>$16</Text>
+                  </View>
                 </View>
-              </View>
+
+              </TouchableWithoutFeedback>
             </Animated.View>
 
             {/*Plate 2*/}

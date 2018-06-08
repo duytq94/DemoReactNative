@@ -27,7 +27,6 @@ export default class RestaurantAnimationScreen extends Component {
     // Animation phrase 3 (zoom out icon bottom menu)
     this.zoomIconBottomMenu = new Animated.Value(1.0);
 
-
     this.state = {
       whichTable: 0,
       whichMenuIcon: 0,

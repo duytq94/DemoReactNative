@@ -68,6 +68,29 @@ export default StyleSheet.create({
     justifyContent: 'space-around',
   },
 
+  // Plate white
+  viewWrapPlateWhite: {
+    position: 'absolute',
+    justifyContent: 'center',
+
+  },
+  viewWrapContentPlateWhite: {
+    flexDirection: 'row',
+    position: 'absolute',
+    justifyContent: 'space-around',
+    width: '100%',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  imgPlateWhite: {
+    width: 130,
+    height: 130,
+  },
+  textCount: {
+    color: '#575869',
+    fontWeight: 'bold',
+  },
+
   // Plate
   imgPlate: {
     width: 130,
@@ -103,6 +126,8 @@ export default StyleSheet.create({
     color: '#575869',
     marginTop: 5
   },
+
+  // Price
   viewWrapPrice: {
     position: 'absolute',
     alignSelf: 'flex-end',

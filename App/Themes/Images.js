@@ -54,6 +54,7 @@ const images = {
   ic_add_circle: require('../Images/ic_add_circle.png'),
   ic_remove_circle: require('../Images/ic_remove_circle.png'),
   ic_red_circle: require('../Images/ic_red_circle.png'),
+  ic_white_circle: require('../Images/ic_white_circle.png'),
 };
 
 export default images

@@ -43,6 +43,6 @@ const PrimaryNav = StackNavigator(
       headerStyle: styles.header
     }
   }
-)
+);
 
 export default PrimaryNav
