@@ -192,8 +192,12 @@ export default class RestaurantAnimationScreen extends Component {
     Animated.timing(this.zoomIconBottomMenu, {
       toValue: 0.5,
       duration: 600
-    }).start()
+    }).start(this.onAnimationNavigateCompleted)
   };
+
+  onAnimationNavigateCompleted = () => {
+    this.props.navigation.navigate('RestaurantAnimation2Screen', {})
+  }
 
   onAnimationCompleted = () => {
     this.setState({
@@ -613,7 +617,7 @@ export default class RestaurantAnimationScreen extends Component {
                 <Image style={styles.imgIconBottomMenu} source={images.ic_clock}/>
               </TouchableWithoutFeedback>
             </Animated.View>
-            
+
             <Animated.View style={{marginBottom: comeIconUpBottomMenu4}}>
               <TouchableWithoutFeedback onPress={this.onIconCancelPress}>
                 <Image style={styles.imgIconBottomMenu} source={images.ic_cancel}/>

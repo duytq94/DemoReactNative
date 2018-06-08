@@ -1,4 +1,4 @@
-import { StackNavigator } from 'react-navigation'
+import {StackNavigator} from 'react-navigation'
 
 import MainScreen from '../Containers/Main/Main.Screen'
 import FetchScreen from '../Containers/Fetch/Fetch.Screen'
@@ -13,30 +13,32 @@ import ModalScreen from '../Containers/Modal/Modal.Screen'
 import LaunchScreen from '../Containers/Launch/Launch.Screen'
 import AnimationScreen from '../Containers/Animation/Animation.Screen'
 import RestaurantAnimationScreen from '../Containers/RestaurantAnimation/RestaurantAnimation.Screen'
+import RestaurantAnimation2Screen from '../Containers/RestaurantAnimation/RestaurantAnimation2.Screen'
 
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = StackNavigator(
   {
-    LaunchScreen: { screen: LaunchScreen },
-    MainScreen: { screen: MainScreen },
-    FetchScreen: { screen: FetchScreen },
-    ListScreen: { screen: ListScreen },
-    TabScreen: { screen: TabScreen },
-    ProfileScreen: { screen: ProfileScreen },
-    AsyncStorageScreen: { screen: AsyncStorageScreen },
+    LaunchScreen: {screen: LaunchScreen},
+    MainScreen: {screen: MainScreen},
+    FetchScreen: {screen: FetchScreen},
+    ListScreen: {screen: ListScreen},
+    TabScreen: {screen: TabScreen},
+    ProfileScreen: {screen: ProfileScreen},
+    AsyncStorageScreen: {screen: AsyncStorageScreen},
     // MapScreen: { screen: MapScreen },
-    WebScreen: { screen: WebScreen },
-    TimeScreen: { screen: TimeScreen },
-    ModalScreen: { screen: ModalScreen },
-    AnimationScreen: { screen: AnimationScreen },
-    RestaurantAnimationScreen: { screen: RestaurantAnimationScreen },
+    WebScreen: {screen: WebScreen},
+    TimeScreen: {screen: TimeScreen},
+    ModalScreen: {screen: ModalScreen},
+    AnimationScreen: {screen: AnimationScreen},
+    RestaurantAnimationScreen: {screen: RestaurantAnimationScreen},
+    RestaurantAnimation2Screen: {screen: RestaurantAnimation2Screen},
   },
   {
     // Default config for all screens
     headerMode: 'none',
-    initialRouteName: 'RestaurantAnimationScreen',
+    initialRouteName: 'RestaurantAnimation2Screen',
     navigationOptions: {
       headerStyle: styles.header
     }
