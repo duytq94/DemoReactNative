@@ -55,53 +55,56 @@ export default class RestaurantAnimation2Screen extends Component {
       Animated.timing(this.comeUpPlate1, {
         toValue: 0,
         duration: 600,
+        delay: 200,
       }),
       Animated.timing(this.comeUpPlate2, {
         toValue: 0,
         duration: 800,
+        delay: 300,
       }),
       Animated.timing(this.comeUpPlate3, {
         toValue: 0,
         duration: 800,
-        delay: 400
+        delay: 700
       }),
 
       // Come up icons bottom menu
       Animated.timing(this.comeUpIconBottomMenu1, {
         toValue: 1,
         duration: 800,
+        delay: 300,
       }),
       Animated.timing(this.comeUpIconBottomMenu2, {
         toValue: 1,
         duration: 800,
-        delay: 100,
+        delay: 400,
       }),
       Animated.timing(this.comeUpIconBottomMenu3, {
         toValue: 1,
         duration: 800,
-        delay: 200,
+        delay: 500,
       }),
       Animated.timing(this.comeUpIconBottomMenu4, {
         toValue: 1,
         duration: 800,
-        delay: 300,
+        delay: 600,
       }),
       Animated.timing(this.comeUpIconBottomMenu5, {
         toValue: 1,
         duration: 800,
-        delay: 400,
+        delay: 700,
       }),
 
       // Text bottom menu
       Animated.timing(this.comeUpTextBottomMenu, {
         toValue: 30,
         duration: 400,
-        delay: 100
+        delay: 300
       }),
       Animated.timing(this.fadeInTextBottomMenu, {
         toValue: 1,
         duration: 400,
-        delay: 100
+        delay: 300
       }),
 
     ]).start();
