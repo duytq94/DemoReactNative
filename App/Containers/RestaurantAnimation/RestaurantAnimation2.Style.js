@@ -117,6 +117,10 @@ export default StyleSheet.create({
     marginRight: 20,
     justifyContent: 'space-around'
   },
+  viewWrapPlateAndName: {
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   viewWrapPlate: {
     flexDirection: 'column',
     alignItems: 'center'
@@ -133,6 +137,7 @@ export default StyleSheet.create({
     alignSelf: 'flex-end',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
   imgRedCircle: {
     width: 28,

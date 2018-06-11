@@ -208,7 +208,7 @@ export default class RestaurantAnimationScreen extends Component {
   render() {
     let scaleZoomTable = this.zoomTableAnim.interpolate({
       inputRange: [0, 0.2, 0.8, 1],
-      outputRange: [1.0, 0.8, 1.2, 1.0],
+      outputRange: [1.0, 0.9, 1.1, 1.0],
     });
 
     let comeIconUpBottomMenu1 = this.comeUpIconBottomMenuAnim1.interpolate({

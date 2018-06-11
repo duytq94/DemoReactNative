@@ -22,7 +22,7 @@ export default class RestaurantAnimation2Screen extends Component {
 
     // Animation phrase 2
     this.fadeInWhitePlate = new Animated.Value(0);
-    this.zoomInPlate = new Animated.Value(0);
+    this.zoomPlate = new Animated.Value(0);
 
   }
 
@@ -51,16 +51,15 @@ export default class RestaurantAnimation2Screen extends Component {
     this.setState({
       whichPlate: whichPlate,
     });
-    console.log(this.state.whichPlate);
 
     this.fadeInWhitePlate.setValue(0.0);
-    this.zoomInPlate.setValue(1);
+    this.zoomPlate.setValue(0);
     Animated.parallel([
       Animated.timing(this.fadeInWhitePlate, {
         toValue: 1.0,
         duration: 800
       }),
-      Animated.timing(this.zoomInPlate, {
+      Animated.timing(this.zoomPlate, {
         toValue: 1,
         duration: 800
       })
@@ -70,14 +69,18 @@ export default class RestaurantAnimation2Screen extends Component {
   onAnimationPlateSuccess = () => {
     this.setState({
       isBtnPlatePress: true,
-    })
+    });
   };
 
   onIconAddPress = () => {
     this.setState({
       countQuantity: this.state.countQuantity + 1,
-    })
-
+    });
+    this.zoomPlate.setValue(0);
+    Animated.timing(this.zoomPlate, {
+      toValue: 1,
+      duration: 800
+    }).start();
   };
 
   componentWillMount() {
@@ -94,6 +97,11 @@ export default class RestaurantAnimation2Screen extends Component {
   }
 
   render() {
+
+    let scaleZoomPlate = this.zoomPlate.interpolate({
+      inputRange: [0, 0.2, 0.8, 1],
+      outputRange: [1.0, 0.9, 1.1, 1.0],
+    });
 
     return (
       <View style={styles.viewContainer}>
@@ -127,67 +135,183 @@ export default class RestaurantAnimation2Screen extends Component {
           {/*Plate row 1*/}
           <View style={styles.viewWrapPlateRow1}>
             {/*Plate 1*/}
-            <Animated.View style={{marginTop: this.comeUpPlate1, transform: [{scale: 1.1}]}}>
-              <TouchableWithoutFeedback onPress={() => this.onPlatePress(1)}>
+            <View style={styles.viewWrapPlateAndName}>
+              <Animated.View style={{
+                marginTop: this.comeUpPlate1,
+                transform: [{scale: this.state.whichPlate === 1 ? scaleZoomPlate : 1.0}]
+              }}>
+                <TouchableWithoutFeedback onPress={!this.state.isBtnPlatePress ? () => this.onPlatePress(1) : null}>
 
-                <View style={styles.viewWrapPlate}>
-                  <Image style={styles.imgPlate} source={images.flan}/>
+                  <View style={styles.viewWrapPlate}>
+                    <Image style={styles.imgPlate} source={images.flan}/>
 
-                  {/*Plate white*/}
-                  <View style={styles.viewWrapPlateWhite}>
-                    <Animated.View
-                      style={{opacity: (this.state.whichPlate === 1 && !this.state.isBtnPlatePress) ? this.fadeInWhitePlate : 0}}>
-                      <View style={{justifyContent: 'center'}}>
-                        <Image style={styles.imgPlateWhite} source={images.ic_white_circle}/>
+                    {/*Plate white*/}
+                    <View style={styles.viewWrapPlateWhite}>
+                      <Animated.View
+                        style={{opacity: (this.state.whichPlate === 1) ? this.fadeInWhitePlate : 0}}>
+                        <View style={{justifyContent: 'center'}}>
+                          <Image style={styles.imgPlateWhite} source={images.ic_white_circle}/>
 
-                        <View style={styles.viewWrapContentPlateWhite}>
-                          <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
-                          <Text style={styles.textCount}>{this.state.countQuantity}</Text>
-                          <TouchableWithoutFeedback onPress={this.onIconAddPress}>
-                            <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
-                          </TouchableWithoutFeedback>
+                          <View style={styles.viewWrapContentPlateWhite}>
+                            <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
+                            <Text style={styles.textCount}>{this.state.countQuantity}</Text>
+                            <TouchableWithoutFeedback onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
+                              <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
+                            </TouchableWithoutFeedback>
+                          </View>
+
                         </View>
+                      </Animated.View>
+                    </View>
 
-                      </View>
-                    </Animated.View>
+                    {/*Price*/}
+                    <View style={styles.viewWrapPrice}>
+                      <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
+                      <Text style={styles.textPrice}>$16</Text>
+                    </View>
                   </View>
 
-                  <Text style={styles.textPlate}>Flan</Text>
-                  <View style={styles.viewWrapPrice}>
-                    <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
-                    <Text style={styles.textPrice}>$16</Text>
-                  </View>
-                </View>
+                </TouchableWithoutFeedback>
+              </Animated.View>
 
-              </TouchableWithoutFeedback>
-            </Animated.View>
+              {/*Name food*/}
+              <Text style={styles.textPlate}>Flan</Text>
+            </View>
 
             {/*Plate 2*/}
-            <Animated.View style={{marginTop: this.comeUpPlate2}}>
-              <View style={styles.viewWrapPlate}>
-                <Image style={styles.imgPlate} source={images.curry}/>
-                <Text style={styles.textPlate}>Curry</Text>
-              </View>
-            </Animated.View>
+            <View style={styles.viewWrapPlateAndName}>
+              <Animated.View style={{
+                marginTop: this.comeUpPlate1,
+                transform: [{scale: this.state.whichPlate === 2 ? scaleZoomPlate : 1.0}]
+              }}>
+                <TouchableWithoutFeedback onPress={!this.state.isBtnPlatePress ? () => this.onPlatePress(2) : null}>
+
+                  <View style={styles.viewWrapPlate}>
+                    <Image style={styles.imgPlate} source={images.curry}/>
+
+                    {/*Plate white*/}
+                    <View style={styles.viewWrapPlateWhite}>
+                      <Animated.View
+                        style={{opacity: (this.state.whichPlate === 2) ? this.fadeInWhitePlate : 0}}>
+                        <View style={{justifyContent: 'center'}}>
+                          <Image style={styles.imgPlateWhite} source={images.ic_white_circle}/>
+
+                          <View style={styles.viewWrapContentPlateWhite}>
+                            <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
+                            <Text style={styles.textCount}>{this.state.countQuantity}</Text>
+                            <TouchableWithoutFeedback onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
+                              <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
+                            </TouchableWithoutFeedback>
+                          </View>
+
+                        </View>
+                      </Animated.View>
+                    </View>
+
+                    {/*Price*/}
+                    <View style={styles.viewWrapPrice}>
+                      <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
+                      <Text style={styles.textPrice}>$24</Text>
+                    </View>
+                  </View>
+
+                </TouchableWithoutFeedback>
+              </Animated.View>
+
+              {/*Name food*/}
+              <Text style={styles.textPlate}>Curry</Text>
+            </View>
           </View>
 
           {/*Plate row 2*/}
           <View style={styles.viewWrapPlateRow2}>
             {/*Plate 3*/}
-            <Animated.View style={{marginTop: this.comeUpPlate3}}>
-              <View style={styles.viewWrapPlate}>
-                <Image style={styles.imgPlate} source={images.salad}/>
-                <Text style={styles.textPlate}>Salmon Salad</Text>
-              </View>
-            </Animated.View>
+            <View style={styles.viewWrapPlateAndName}>
+              <Animated.View style={{
+                marginTop: this.comeUpPlate1,
+                transform: [{scale: this.state.whichPlate === 3 ? scaleZoomPlate : 1.0}]
+              }}>
+                <TouchableWithoutFeedback onPress={!this.state.isBtnPlatePress ? () => this.onPlatePress(3) : null}>
+
+                  <View style={styles.viewWrapPlate}>
+                    <Image style={styles.imgPlate} source={images.salad}/>
+
+                    {/*Plate white*/}
+                    <View style={styles.viewWrapPlateWhite}>
+                      <Animated.View
+                        style={{opacity: (this.state.whichPlate === 3) ? this.fadeInWhitePlate : 0}}>
+                        <View style={{justifyContent: 'center'}}>
+                          <Image style={styles.imgPlateWhite} source={images.ic_white_circle}/>
+
+                          <View style={styles.viewWrapContentPlateWhite}>
+                            <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
+                            <Text style={styles.textCount}>{this.state.countQuantity}</Text>
+                            <TouchableWithoutFeedback onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
+                              <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
+                            </TouchableWithoutFeedback>
+                          </View>
+
+                        </View>
+                      </Animated.View>
+                    </View>
+
+                    {/*Price*/}
+                    <View style={styles.viewWrapPrice}>
+                      <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
+                      <Text style={styles.textPrice}>$12</Text>
+                    </View>
+                  </View>
+
+                </TouchableWithoutFeedback>
+              </Animated.View>
+
+              {/*Name food*/}
+              <Text style={styles.textPlate}>Salmon Salad</Text>
+            </View>
 
             {/*Plate 4*/}
-            <Animated.View style={{marginTop: this.comeUpPlate3}}>
-              <View style={styles.viewWrapPlate}>
-                <Image style={styles.imgPlate} source={images.pizza}/>
-                <Text style={styles.textPlate}>Pizza</Text>
-              </View>
-            </Animated.View>
+            <View style={styles.viewWrapPlateAndName}>
+              <Animated.View style={{
+                marginTop: this.comeUpPlate1,
+                transform: [{scale: this.state.whichPlate === 4 ? scaleZoomPlate : 1.0}]
+              }}>
+                <TouchableWithoutFeedback onPress={!this.state.isBtnPlatePress ? () => this.onPlatePress(4) : null}>
+
+                  <View style={styles.viewWrapPlate}>
+                    <Image style={styles.imgPlate} source={images.pizza}/>
+
+                    {/*Plate white*/}
+                    <View style={styles.viewWrapPlateWhite}>
+                      <Animated.View
+                        style={{opacity: (this.state.whichPlate === 4) ? this.fadeInWhitePlate : 0}}>
+                        <View style={{justifyContent: 'center'}}>
+                          <Image style={styles.imgPlateWhite} source={images.ic_white_circle}/>
+
+                          <View style={styles.viewWrapContentPlateWhite}>
+                            <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
+                            <Text style={styles.textCount}>{this.state.countQuantity}</Text>
+                            <TouchableWithoutFeedback onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
+                              <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
+                            </TouchableWithoutFeedback>
+                          </View>
+
+                        </View>
+                      </Animated.View>
+                    </View>
+
+                    {/*Price*/}
+                    <View style={styles.viewWrapPrice}>
+                      <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
+                      <Text style={styles.textPrice}>$12</Text>
+                    </View>
+                  </View>
+
+                </TouchableWithoutFeedback>
+              </Animated.View>
+
+              {/*Name food*/}
+              <Text style={styles.textPlate}>Pizza</Text>
+            </View>
           </View>
 
           {/*Plate row 3*/}
