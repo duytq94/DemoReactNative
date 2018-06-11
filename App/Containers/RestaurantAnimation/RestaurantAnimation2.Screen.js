@@ -26,6 +26,9 @@ export default class RestaurantAnimation2Screen extends Component {
     this.comeUpIconBottomMenu4 = new Animated.Value(0);
     this.comeUpIconBottomMenu5 = new Animated.Value(0);
 
+    this.comeUpTextBottomMenu = new Animated.Value(-10);
+    this.fadeInTextBottomMenu = new Animated.Value(0);
+
     // Animation phrase 2 (zoom plate when press)
     this.fadeInWhitePlate = new Animated.Value(0);
     this.zoomPlate = new Animated.Value(0);
@@ -43,6 +46,9 @@ export default class RestaurantAnimation2Screen extends Component {
     this.comeUpIconBottomMenu4.setValue(0);
     this.comeUpIconBottomMenu5.setValue(0);
 
+    this.comeUpTextBottomMenu = new Animated.Value(-10);
+    this.fadeInTextBottomMenu = new Animated.Value(0);
+
     Animated.parallel([
       // Come up plates
       Animated.timing(this.comeUpPlate1, {
@@ -59,7 +65,7 @@ export default class RestaurantAnimation2Screen extends Component {
         delay: 400
       }),
 
-      // Come up bottom menu
+      // Come up icons bottom menu
       Animated.timing(this.comeUpIconBottomMenu1, {
         toValue: 1,
         duration: 800,
@@ -85,7 +91,20 @@ export default class RestaurantAnimation2Screen extends Component {
         delay: 400,
       }),
 
-    ]).start()
+      // Text bottom menu
+      Animated.timing(this.comeUpTextBottomMenu, {
+        toValue: 30,
+        duration: 400,
+        delay: 100
+      }),
+      Animated.timing(this.fadeInTextBottomMenu, {
+        toValue: 1,
+        duration: 400,
+        delay: 100
+      }),
+
+    ]).start();
+    this.setState({});
   }
 
   onPlatePress = (whichPlate) => {
@@ -437,23 +456,28 @@ export default class RestaurantAnimation2Screen extends Component {
           </View>
 
           {/*Text*/}
-          <View style={styles.viewWrapTextBottomMenu}>
-            <View style={styles.viewWrapTextBottomMenu2}>
-              <Text style={styles.textBottomMenu}>Appetizer</Text>
-            </View>
-            <View style={styles.viewWrapTextBottomMenu2}>
-              <Text style={styles.textBottomMenu}>Salad</Text>
-            </View>
-            <View style={styles.viewWrapTextBottomMenu2}>
-              <Text style={styles.textBottomMenu}>Soup</Text>
-            </View>
-            <View style={styles.viewWrapTextBottomMenu2}>
-              <Text style={styles.textBottomMenu}>Meat</Text>
-            </View>
-            <View style={styles.viewWrapTextBottomMenu2}>
-              <Text style={styles.textBottomMenu}>Cancel</Text>
-            </View>
+          <View style={styles.viewWrapTextBottomMenu1}>
+            <Animated.View style={{marginBottom: this.comeUpTextBottomMenu, opacity: this.fadeInTextBottomMenu}}>
+              <View style={styles.viewWrapTextBottomMenu2}>
+                <View style={styles.viewWrapTextBottomMenu3}>
+                  <Text style={styles.textBottomMenu}>Appetizer</Text>
+                </View>
+                <View style={styles.viewWrapTextBottomMenu3}>
+                  <Text style={styles.textBottomMenu}>Salad</Text>
+                </View>
+                <View style={styles.viewWrapTextBottomMenu3}>
+                  <Text style={styles.textBottomMenu}>Soup</Text>
+                </View>
+                <View style={styles.viewWrapTextBottomMenu3}>
+                  <Text style={styles.textBottomMenu}>Meat</Text>
+                </View>
+                <View style={styles.viewWrapTextBottomMenu3}>
+                  <Text style={styles.textBottomMenu}>Cancel</Text>
+                </View>
+              </View>
+            </Animated.View>
           </View>
+
         </View>
 
       </View>

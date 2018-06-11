@@ -12,7 +12,7 @@ export default class RestaurantAnimationScreen extends Component {
 
     // Animation phrase 1 (drop down view with bounce)
     this.dropDownBodyAnim = new Animated.Value(60);
-    this.fadeInBodyanim = new Animated.Value(0.0);
+    this.fadeInBodyAnim = new Animated.Value(0.0);
 
     // Animation phrase 2 (zoom button when be pressed and show up bottom menu)
     this.zoomTableAnim = new Animated.Value(0);
@@ -36,14 +36,14 @@ export default class RestaurantAnimationScreen extends Component {
 
   componentDidMount() {
     this.dropDownBodyAnim.setValue(60);
-    this.fadeInBodyanim.setValue(0.0);
+    this.fadeInBodyAnim.setValue(0.0);
     Animated.parallel([
       Animated.spring(this.dropDownBodyAnim, {
         toValue: 0,
         friction: 3.0,
         duration: 1200,
       }),
-      Animated.timing(this.fadeInBodyanim, {
+      Animated.timing(this.fadeInBodyAnim, {
         toValue: 1.0,
         duration: 800,
       }),
@@ -256,7 +256,7 @@ export default class RestaurantAnimationScreen extends Component {
         </View>
 
         {/*Group table*/}
-        <Animated.View style={{marginTop: this.dropDownBodyAnim, opacity: this.fadeInBodyanim}}>
+        <Animated.View style={{marginTop: this.dropDownBodyAnim, opacity: this.fadeInBodyAnim}}>
           {/*Text "Entrance"*/}
           <Animated.View
             style={{

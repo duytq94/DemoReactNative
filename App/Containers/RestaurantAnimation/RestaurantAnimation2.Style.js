@@ -161,8 +161,9 @@ export default StyleSheet.create({
     height: 120,
     position: 'absolute',
     marginTop: (Dimensions.get('window').height) - 120,
-    marginLeft: 20,
-    marginRight: 20,
+    left: 20,
+    right: 20,
+    // backgroundColor: 'orange'
   },
   viewWrapIconsBottomMenu: {
     flexDirection: 'row',
@@ -175,15 +176,21 @@ export default StyleSheet.create({
     width: 40,
     height: 40,
   },
-  viewWrapTextBottomMenu: {
+  viewWrapTextBottomMenu1: {
+    width: '100%',
+    height: 100,
+    position: 'absolute',
+    justifyContent: 'flex-end',
+    // backgroundColor: 'blue'
+  },
+  viewWrapTextBottomMenu2: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginTop: 50,
-    position: 'absolute',
+    // backgroundColor: 'red'
   },
-  viewWrapTextBottomMenu2: {
-    width: 80,
+  viewWrapTextBottomMenu3: {
+    width: 50,
     alignItems: 'center',
   },
   textBottomMenu: {
