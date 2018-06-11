@@ -196,7 +196,7 @@ export default class RestaurantAnimationScreen extends Component {
 
   onAnimationNavigateCompleted = () => {
     this.props.navigation.navigate('RestaurantAnimation2Screen', {})
-  }
+  };
 
   onAnimationCompleted = () => {
     this.setState({
