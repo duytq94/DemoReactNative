@@ -195,6 +195,11 @@ export default class RestaurantAnimationScreen extends Component {
   };
 
   onAnimationNavigateCompleted = () => {
+    // Set everything back to default before navigate
+    this.zoomIconBottomMenu.setValue(1);
+    this.onIconCancelPress();
+
+    // Navigate
     this.props.navigation.navigate('RestaurantAnimation2Screen', {})
   };
 

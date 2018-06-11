@@ -153,17 +153,7 @@ export default class RestaurantAnimation2Screen extends Component {
   }
 
   handleBackPress() {
-    // this.props.navigation.goBack();
-    // this.props.navigation.navigate('RestaurantAnimationScreen', {});
-    const resetAction = NavigationActions.reset(
-      {
-        index: 0,
-        key: null,
-        actions: [
-          NavigationActions.navigate({routeName: 'RestaurantAnimationScreen',})
-        ],
-      });
-    this.props.navigation.dispatch(resetAction);
+    this.props.navigation.goBack();
     return true
   }
 
