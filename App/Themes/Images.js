@@ -55,6 +55,12 @@ const images = {
   ic_remove_circle: require('../Images/ic_remove_circle.png'),
   ic_red_circle: require('../Images/ic_red_circle.png'),
   ic_white_circle: require('../Images/ic_white_circle.png'),
+
+  ic_restaurant: require('../Images/ic_restaurant.png'),
+  ic_cake: require('../Images/ic_cake.png'),
+  ic_car: require('../Images/ic_car.png'),
+  ic_coffee: require('../Images/ic_coffee.png'),
+
 };
 
 export default images

@@ -9,7 +9,7 @@ export default StyleSheet.create({
     width: '100%',
     height: 48,
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#ffbf00',
     flexDirection: 'row',
   },
   icBack: {
@@ -127,7 +127,7 @@ export default StyleSheet.create({
     paddingLeft: 15,
   },
 
-  // Icon bottom menu
+  // Bottom menu
   viewWrapBottomMenu: {
     flexDirection: 'column',
     marginLeft: 20,
@@ -152,7 +152,8 @@ export default StyleSheet.create({
     width: '100%'
   },
   viewWrapTextBottomMenu2: {
-    width: 80, alignItems: 'center',
+    width: 80,
+    alignItems: 'center',
   },
   textBottomMenu: {
     color: '#575869',

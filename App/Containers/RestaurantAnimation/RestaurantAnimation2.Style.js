@@ -9,7 +9,7 @@ export default StyleSheet.create({
     width: '100%',
     height: 48,
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#ffbf00',
     flexDirection: 'row',
   },
   icBack: {
@@ -150,12 +150,45 @@ export default StyleSheet.create({
     fontSize: 11,
   },
 
-  //Bottom
+  // Bottom menu
   imgCoverWhiteBottom: {
     width: '100%',
-    height: 250,
+    height: 280,
     position: 'absolute',
-    marginTop: (Dimensions.get('window').height) - 250
+    marginTop: (Dimensions.get('window').height) - 280,
+  },
+  viewWrapBottomMenu: {
+    height: 120,
+    position: 'absolute',
+    marginTop: (Dimensions.get('window').height) - 120,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  viewWrapIconsBottomMenu: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-around',
+    width: '100%',
+    height: '100%',
+  },
+  imgIconBottomMenu: {
+    width: 40,
+    height: 40,
+  },
+  viewWrapTextBottomMenu: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginTop: 50,
+    position: 'absolute',
+  },
+  viewWrapTextBottomMenu2: {
+    width: 80,
+    alignItems: 'center',
+  },
+  textBottomMenu: {
+    fontWeight: 'bold',
+    color: '#575869',
+    fontSize: 11
   }
-
 })

@@ -208,7 +208,7 @@ export default class RestaurantAnimationScreen extends Component {
   render() {
     let scaleZoomTable = this.zoomTableAnim.interpolate({
       inputRange: [0, 0.2, 0.8, 1],
-      outputRange: [1.0, 0.9, 1.1, 1.0],
+      outputRange: [1.0, 0.85, 1.15, 1.0],
     });
 
     let comeIconUpBottomMenu1 = this.comeUpIconBottomMenuAnim1.interpolate({
@@ -600,7 +600,7 @@ export default class RestaurantAnimationScreen extends Component {
             </Animated.View>
 
             <Animated.View style={{
-              marginBottom: comeIconUpBottomMenu1,
+              marginBottom: comeIconUpBottomMenu2,
               transform: [{scale: this.state.whichMenuIcon === 2 ? this.zoomIconBottomMenu : 1.0}]
             }}>
               <TouchableWithoutFeedback onPress={() => this.onOthersIconPress(2)}>
@@ -609,7 +609,7 @@ export default class RestaurantAnimationScreen extends Component {
             </Animated.View>
 
             <Animated.View style={{
-              marginBottom: comeIconUpBottomMenu1,
+              marginBottom: comeIconUpBottomMenu3,
               transform: [{scale: this.state.whichMenuIcon === 3 ? this.zoomIconBottomMenu : 1.0}]
             }}>
               <TouchableWithoutFeedback onPress={() => this.onOthersIconPress(3)}>
@@ -648,7 +648,6 @@ export default class RestaurantAnimationScreen extends Component {
 
           </View>
         </View>
-
 
       </View>
     )

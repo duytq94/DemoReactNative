@@ -15,12 +15,18 @@ export default class RestaurantAnimation2Screen extends Component {
       countQuantity: 0,
     };
 
-    // Animation phrase 1
+    // Animation phrase 1 (push up plates and menu)
     this.comeUpPlate1 = new Animated.Value(10);
     this.comeUpPlate2 = new Animated.Value(20);
     this.comeUpPlate3 = new Animated.Value(15);
 
-    // Animation phrase 2
+    this.comeUpIconBottomMenu1 = new Animated.Value(0);
+    this.comeUpIconBottomMenu2 = new Animated.Value(0);
+    this.comeUpIconBottomMenu3 = new Animated.Value(0);
+    this.comeUpIconBottomMenu4 = new Animated.Value(0);
+    this.comeUpIconBottomMenu5 = new Animated.Value(0);
+
+    // Animation phrase 2 (zoom plate when press)
     this.fadeInWhitePlate = new Animated.Value(0);
     this.zoomPlate = new Animated.Value(0);
 
@@ -30,7 +36,15 @@ export default class RestaurantAnimation2Screen extends Component {
     this.comeUpPlate1.setValue(10);
     this.comeUpPlate2.setValue(20);
     this.comeUpPlate3.setValue(15);
+
+    this.comeUpIconBottomMenu1.setValue(0);
+    this.comeUpIconBottomMenu2.setValue(0);
+    this.comeUpIconBottomMenu3.setValue(0);
+    this.comeUpIconBottomMenu4.setValue(0);
+    this.comeUpIconBottomMenu5.setValue(0);
+
     Animated.parallel([
+      // Come up plates
       Animated.timing(this.comeUpPlate1, {
         toValue: 0,
         duration: 600,
@@ -44,6 +58,33 @@ export default class RestaurantAnimation2Screen extends Component {
         duration: 800,
         delay: 400
       }),
+
+      // Come up bottom menu
+      Animated.timing(this.comeUpIconBottomMenu1, {
+        toValue: 1,
+        duration: 800,
+      }),
+      Animated.timing(this.comeUpIconBottomMenu2, {
+        toValue: 1,
+        duration: 800,
+        delay: 100,
+      }),
+      Animated.timing(this.comeUpIconBottomMenu3, {
+        toValue: 1,
+        duration: 800,
+        delay: 200,
+      }),
+      Animated.timing(this.comeUpIconBottomMenu4, {
+        toValue: 1,
+        duration: 800,
+        delay: 300,
+      }),
+      Animated.timing(this.comeUpIconBottomMenu5, {
+        toValue: 1,
+        duration: 800,
+        delay: 400,
+      }),
+
     ]).start()
   }
 
@@ -101,6 +142,27 @@ export default class RestaurantAnimation2Screen extends Component {
     let scaleZoomPlate = this.zoomPlate.interpolate({
       inputRange: [0, 0.2, 0.8, 1],
       outputRange: [1.0, 0.9, 1.1, 1.0],
+    });
+
+    let bounceUpIconBottomMenu1 = this.comeUpIconBottomMenu1.interpolate({
+      inputRange: [0, 0.7, 0.85, 1],
+      outputRange: [-15, 75, 65, 70],
+    });
+    let bounceUpIconBottomMenu2 = this.comeUpIconBottomMenu2.interpolate({
+      inputRange: [0, 0.7, 0.85, 1],
+      outputRange: [-15, 75, 65, 70],
+    });
+    let bounceUpIconBottomMenu3 = this.comeUpIconBottomMenu3.interpolate({
+      inputRange: [0, 0.7, 0.85, 1],
+      outputRange: [-15, 75, 65, 70],
+    });
+    let bounceUpIconBottomMenu4 = this.comeUpIconBottomMenu4.interpolate({
+      inputRange: [0, 0.7, 0.85, 1],
+      outputRange: [-15, 75, 65, 70],
+    });
+    let bounceUpIconBottomMenu5 = this.comeUpIconBottomMenu5.interpolate({
+      inputRange: [0, 0.7, 0.85, 1],
+      outputRange: [-15, 75, 65, 70],
     });
 
     return (
@@ -302,7 +364,7 @@ export default class RestaurantAnimation2Screen extends Component {
                     {/*Price*/}
                     <View style={styles.viewWrapPrice}>
                       <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
-                      <Text style={styles.textPrice}>$12</Text>
+                      <Text style={styles.textPrice}>$13</Text>
                     </View>
                   </View>
 
@@ -321,6 +383,11 @@ export default class RestaurantAnimation2Screen extends Component {
               <View style={styles.viewWrapPlate}>
                 <Image style={styles.imgPlate} source={images.chicken}/>
                 <Text style={styles.textPlate}>Chicken</Text>
+                {/*Price*/}
+                <View style={styles.viewWrapPrice}>
+                  <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
+                  <Text style={styles.textPrice}>$20</Text>
+                </View>
               </View>
             </Animated.View>
 
@@ -329,6 +396,10 @@ export default class RestaurantAnimation2Screen extends Component {
               <View style={styles.viewWrapPlate}>
                 <Image style={styles.imgPlate} source={images.duck}/>
                 <Text style={styles.textPlate}>Duck</Text>
+                <View style={styles.viewWrapPrice}>
+                  <Image style={styles.imgRedCircle} source={images.ic_red_circle}/>
+                  <Text style={styles.textPrice}>$11</Text>
+                </View>
               </View>
             </Animated.View>
           </View>
@@ -337,6 +408,52 @@ export default class RestaurantAnimation2Screen extends Component {
         {/*Cover white bottom*/}
         <View style={styles.imgCoverWhiteBottom}>
           <Image style={{width: '100%', height: '100%'}} source={images.shadow_white}/>
+        </View>
+
+        {/*Bottom menu*/}
+        <View style={styles.viewWrapBottomMenu}>
+          {/*Icons*/}
+          <View style={styles.viewWrapIconsBottomMenu}>
+
+            <Animated.View style={{marginBottom: bounceUpIconBottomMenu1}}>
+              <Image style={styles.imgIconBottomMenu} source={images.ic_restaurant}/>
+            </Animated.View>
+
+            <Animated.View style={{marginBottom: bounceUpIconBottomMenu2}}>
+              <Image style={styles.imgIconBottomMenu} source={images.ic_cake}/>
+            </Animated.View>
+
+            <Animated.View style={{marginBottom: bounceUpIconBottomMenu3}}>
+              <Image style={styles.imgIconBottomMenu} source={images.ic_car}/>
+            </Animated.View>
+
+            <Animated.View style={{marginBottom: bounceUpIconBottomMenu4}}>
+              <Image style={styles.imgIconBottomMenu} source={images.ic_coffee}/>
+            </Animated.View>
+
+            <Animated.View style={{marginBottom: bounceUpIconBottomMenu5}}>
+              <Image style={styles.imgIconBottomMenu} source={images.ic_cancel}/>
+            </Animated.View>
+          </View>
+
+          {/*Text*/}
+          <View style={styles.viewWrapTextBottomMenu}>
+            <View style={styles.viewWrapTextBottomMenu2}>
+              <Text style={styles.textBottomMenu}>Appetizer</Text>
+            </View>
+            <View style={styles.viewWrapTextBottomMenu2}>
+              <Text style={styles.textBottomMenu}>Salad</Text>
+            </View>
+            <View style={styles.viewWrapTextBottomMenu2}>
+              <Text style={styles.textBottomMenu}>Soup</Text>
+            </View>
+            <View style={styles.viewWrapTextBottomMenu2}>
+              <Text style={styles.textBottomMenu}>Meat</Text>
+            </View>
+            <View style={styles.viewWrapTextBottomMenu2}>
+              <Text style={styles.textBottomMenu}>Cancel</Text>
+            </View>
+          </View>
         </View>
 
       </View>
