@@ -111,7 +111,7 @@ export default class RestaurantAnimation2Screen extends Component {
     this.setState({});
   }
 
-  onPlatePress = (whichPlate) => {
+  onPlatePress = whichPlate => {
     this.setState({
       whichPlate: whichPlate,
     });
@@ -159,6 +159,15 @@ export default class RestaurantAnimation2Screen extends Component {
     this.props.navigation.goBack();
     return true
   }
+
+  onIconCancelPress = () => {
+    this.setState({
+      whichPlate: 0,
+      isBtnPlatePress: false,
+      countQuantity: 0,
+    });
+
+  };
 
   render() {
 
@@ -455,7 +464,9 @@ export default class RestaurantAnimation2Screen extends Component {
             </Animated.View>
 
             <Animated.View style={{marginBottom: bounceUpIconBottomMenu5}}>
-              <Image style={styles.imgIconBottomMenu} source={images.ic_cancel}/>
+              <TouchableOpacity onPress={this.onIconCancelPress}>
+                <Image style={styles.imgIconBottomMenu} source={images.ic_cancel}/>
+              </TouchableOpacity>
             </Animated.View>
           </View>
 
