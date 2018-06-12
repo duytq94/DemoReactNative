@@ -9,6 +9,9 @@ export default class RestaurantAnimationScreen extends Component {
     super(props);
     backPress = this.handleBackPress.bind(this);
 
+    // Slow down speed animation here (1 = default)
+    this.timeDilation = 2;
+
     // Animation phrase 1 (drop down view with bounce)
     this.dropDownBodyAnim = new Animated.Value(60);
     this.fadeInBodyAnim = new Animated.Value(0);
@@ -40,13 +43,13 @@ export default class RestaurantAnimationScreen extends Component {
     Animated.parallel([
       Animated.spring(this.dropDownBodyAnim, {
         toValue: 0,
-        friction: 3,
-        duration: 1000,
+        friction: 3 / this.timeDilation,
+        duration: 1000 * this.timeDilation,
         delay: 200,
       }),
       Animated.timing(this.fadeInBodyAnim, {
         toValue: 1,
-        duration: 800,
+        duration: 800 * this.timeDilation,
         delay: 200
       }),
     ]).start()
@@ -86,43 +89,43 @@ export default class RestaurantAnimationScreen extends Component {
       Animated.parallel([
         Animated.timing(this.zoomTableAnim, {
           toValue: 1,
-          duration: 1000,
+          duration: 1000 * this.timeDilation,
         }),
         Animated.timing(this.fadeOutTableAnim, {
           toValue: 0.2,
-          duration: 800,
+          duration: 800 * this.timeDilation,
         }),
         Animated.timing(this.fadeOutTextEntranceAnim, {
           toValue: 0,
-          duration: 800,
+          duration: 800 * this.timeDilation,
         }),
         Animated.timing(this.comeUpIconBottomMenuAnim1, {
           toValue: 1,
-          duration: 600,
+          duration: 600 * this.timeDilation,
         }),
         Animated.timing(this.comeUpIconBottomMenuAnim2, {
           toValue: 1,
-          duration: 600,
+          duration: 600 * this.timeDilation,
           delay: 50,
         }),
         Animated.timing(this.comeUpIconBottomMenuAnim3, {
           toValue: 1,
-          duration: 600,
+          duration: 600 * this.timeDilation,
           delay: 100,
         }),
         Animated.timing(this.comeUpIconBottomMenuAnim4, {
           toValue: 1,
-          duration: 600,
+          duration: 600 * this.timeDilation,
           delay: 150,
         }),
         Animated.timing(this.comeUpTextBottomMenuAnim, {
           toValue: 15,
-          duration: 500,
+          duration: 500 * this.timeDilation,
           delay: 150,
         }),
         Animated.timing(this.fadeInTextBottomMenuAnim, {
           toValue: 1,
-          duration: 500,
+          duration: 500 * this.timeDilation,
           delay: 150,
         }),
       ]).start()
@@ -143,43 +146,43 @@ export default class RestaurantAnimationScreen extends Component {
     Animated.parallel([
       Animated.timing(this.zoomTableAnim, {
         toValue: 0,
-        duration: 1000,
+        duration: 1000 * this.timeDilation,
       }),
       Animated.timing(this.fadeOutTableAnim, {
         toValue: 1,
-        duration: 800,
+        duration: 800 * this.timeDilation,
       }),
       Animated.timing(this.fadeOutTextEntranceAnim, {
         toValue: 1,
-        duration: 800,
+        duration: 800 * this.timeDilation,
       }),
       Animated.timing(this.comeUpIconBottomMenuAnim1, {
         toValue: 0,
-        duration: 600,
+        duration: 600 * this.timeDilation,
       }),
       Animated.timing(this.comeUpIconBottomMenuAnim2, {
         toValue: 0,
-        duration: 600,
+        duration: 600 * this.timeDilation,
         delay: 50,
       }),
       Animated.timing(this.comeUpIconBottomMenuAnim3, {
         toValue: 0,
-        duration: 600,
+        duration: 600 * this.timeDilation,
         delay: 100,
       }),
       Animated.timing(this.comeUpIconBottomMenuAnim4, {
         toValue: 0,
-        duration: 600,
+        duration: 600 * this.timeDilation,
         delay: 150,
       }),
       Animated.timing(this.comeUpTextBottomMenuAnim, {
         toValue: -20,
-        duration: 500,
+        duration: 500 * this.timeDilation,
         delay: 150,
       }),
       Animated.timing(this.fadeInTextBottomMenuAnim, {
         toValue: 0,
-        duration: 500,
+        duration: 500 * this.timeDilation,
         delay: 150,
       }),
     ]).start(this.onAnimationCompleted)
@@ -194,7 +197,7 @@ export default class RestaurantAnimationScreen extends Component {
     });
     Animated.timing(this.zoomIconBottomMenu, {
       toValue: 0.5,
-      duration: 600
+      duration: 600 * this.timeDilation,
     }).start(this.onAnimationNavigateCompleted)
   };
 
@@ -204,7 +207,7 @@ export default class RestaurantAnimationScreen extends Component {
     this.onIconCancelPress();
 
     // Navigate
-    this.props.navigation.navigate('RestaurantAnimation2Screen', {})
+    this.props.navigation.navigate('RestaurantAnimation2Screen', {timeDilation: this.timeDilation})
   };
 
   onAnimationCompleted = () => {

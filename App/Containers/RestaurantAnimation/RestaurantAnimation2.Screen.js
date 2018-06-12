@@ -19,6 +19,8 @@ export default class RestaurantAnimation2Screen extends Component {
     super(props);
     backPress = this.handleBackPress.bind(this);
 
+    this.timeDilation = this.props.navigation.state.params.timeDilation;
+
     this.state = {
       whichPlate: 0,
       isBtnPlatePress: false,
@@ -70,68 +72,68 @@ export default class RestaurantAnimation2Screen extends Component {
       // Move tab indicator
       Animated.timing(this.moveTabIndicator, {
         toValue: posXIconMenu - 21,
-        duration: 500,
+        duration: 500 * this.timeDilation,
         delay: 200,
       }),
       Animated.timing(this.zoomTabIndicator, {
         toValue: 1,
-        duration: 700,
+        duration: 700 * this.timeDilation,
         delay: 200,
       }),
 
       // Come up plates
       Animated.timing(this.comeUpPlate1, {
         toValue: 0,
-        duration: 600,
+        duration: 600 * this.timeDilation,
         delay: 200,
       }),
       Animated.timing(this.comeUpPlate2, {
         toValue: 0,
-        duration: 800,
+        duration: 800 * this.timeDilation,
         delay: 300,
       }),
       Animated.timing(this.comeUpPlate3, {
         toValue: 0,
-        duration: 800,
+        duration: 800 * this.timeDilation,
         delay: 700
       }),
 
       // Come up icons bottom menu
       Animated.timing(this.comeUpIconBottomMenu1, {
         toValue: 1,
-        duration: 800,
+        duration: 800 * this.timeDilation,
         delay: 300,
       }),
       Animated.timing(this.comeUpIconBottomMenu2, {
         toValue: 1,
-        duration: 800,
+        duration: 800 * this.timeDilation,
         delay: 400,
       }),
       Animated.timing(this.comeUpIconBottomMenu3, {
         toValue: 1,
-        duration: 800,
+        duration: 800 * this.timeDilation,
         delay: 500,
       }),
       Animated.timing(this.comeUpIconBottomMenu4, {
         toValue: 1,
-        duration: 800,
+        duration: 800 * this.timeDilation,
         delay: 600,
       }),
       Animated.timing(this.comeUpIconBottomMenu5, {
         toValue: 1,
-        duration: 800,
+        duration: 800 * this.timeDilation,
         delay: 700,
       }),
 
       // Come up text bottom menu
       Animated.timing(this.comeUpTextBottomMenu, {
         toValue: 30,
-        duration: 400,
+        duration: 400 * this.timeDilation,
         delay: 300
       }),
       Animated.timing(this.fadeInTextBottomMenu, {
         toValue: 1,
-        duration: 400,
+        duration: 400 * this.timeDilation,
         delay: 300
       }),
 
@@ -193,11 +195,11 @@ export default class RestaurantAnimation2Screen extends Component {
     Animated.parallel([
       Animated.timing(this.fadeInWhitePlate, {
         toValue: 1,
-        duration: 800
+        duration: 800 * this.timeDilation,
       }),
       Animated.timing(this.zoomPlate, {
         toValue: 1,
-        duration: 800
+        duration: 800 * this.timeDilation,
       })
     ]).start(this.onAnimationPlateSuccess)
   };
@@ -223,7 +225,7 @@ export default class RestaurantAnimation2Screen extends Component {
     this.zoomPlate.setValue(0);
     Animated.timing(this.zoomPlate, {
       toValue: 1,
-      duration: 800
+      duration: 800 * this.timeDilation,
     }).start();
   };
 
@@ -247,11 +249,11 @@ export default class RestaurantAnimation2Screen extends Component {
     Animated.parallel([
       Animated.timing(this.fadeInWhitePlate, {
         toValue: 0,
-        duration: 800
+        duration: 800 * this.timeDilation,
       }),
       Animated.timing(this.zoomPlate, {
         toValue: 0,
-        duration: 800
+        duration: 800 * this.timeDilation,
       })
     ]).start(this.onAnimationCancelCompleted);
   };
