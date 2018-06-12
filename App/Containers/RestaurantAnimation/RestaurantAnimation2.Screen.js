@@ -1,5 +1,14 @@
 import React, {Component} from 'react'
-import {Animated, BackHandler, Image, Text, TouchableOpacity, TouchableWithoutFeedback, View,} from 'react-native'
+import {
+  Animated,
+  BackHandler,
+  Dimensions,
+  Image,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native'
 import {NavigationActions} from 'react-navigation'
 
 import styles from './RestaurantAnimation2.Style'
@@ -14,9 +23,13 @@ export default class RestaurantAnimation2Screen extends Component {
       whichPlate: 0,
       isBtnPlatePress: false,
       countQuantity: 0,
+      shouldShowIndicator: false,
     };
 
     // Animation phrase 1 (push up plates and menu)
+    this.moveTabIndicator = new Animated.Value(0);
+    this.zoomTabIndicator = new Animated.Value(0);
+
     this.comeUpPlate1 = new Animated.Value(10);
     this.comeUpPlate2 = new Animated.Value(20);
     this.comeUpPlate3 = new Animated.Value(15);
@@ -36,7 +49,10 @@ export default class RestaurantAnimation2Screen extends Component {
 
   }
 
-  componentDidMount() {
+  doFirstAnimation(posXIconSeat, posXIconMenu) {
+    this.moveTabIndicator.setValue(posXIconSeat - 20);
+    this.zoomTabIndicator.setValue(0);
+
     this.comeUpPlate1.setValue(10);
     this.comeUpPlate2.setValue(20);
     this.comeUpPlate3.setValue(15);
@@ -51,6 +67,18 @@ export default class RestaurantAnimation2Screen extends Component {
     this.fadeInTextBottomMenu = new Animated.Value(0);
 
     Animated.parallel([
+      // Move tab indicator
+      Animated.timing(this.moveTabIndicator, {
+        toValue: posXIconMenu - 21,
+        duration: 5000,
+        delay: 200,
+      }),
+      Animated.timing(this.zoomTabIndicator, {
+        toValue: 1,
+        duration: 7000,
+        delay: 200,
+      }),
+
       // Come up plates
       Animated.timing(this.comeUpPlate1, {
         toValue: 0,
@@ -95,7 +123,7 @@ export default class RestaurantAnimation2Screen extends Component {
         delay: 700,
       }),
 
-      // Text bottom menu
+      // Come up text bottom menu
       Animated.timing(this.comeUpTextBottomMenu, {
         toValue: 30,
         duration: 400,
@@ -108,7 +136,51 @@ export default class RestaurantAnimation2Screen extends Component {
       }),
 
     ]).start();
-    this.setState({});
+    this.setState({
+      shouldShowIndicator: true,
+    });
+  }
+
+  componentDidMount() {
+    let posXIconSeat;
+    let posXIconMenu;
+    let widthScreen = Dimensions.get('window').width;
+
+    switch (widthScreen) {
+      case 180:
+        // HD
+        posXIconSeat = 247 / 2;
+        posXIconMenu = 147 / 2;
+        this.doFirstAnimation(posXIconSeat, posXIconMenu);
+        break;
+      case 360:
+        // Full HD
+        posXIconSeat = 247;
+        posXIconMenu = 147;
+        this.doFirstAnimation(posXIconSeat, posXIconMenu);
+        break;
+      case 720:
+        // QHD
+        posXIconSeat = 247 * 2;
+        posXIconMenu = 147 * 2;
+        this.doFirstAnimation(posXIconSeat, posXIconMenu);
+        break;
+      default:
+        // Measure
+        // Have to delay because sometimes componentDidMount be called but system not render UI success
+        // Function measure is asynchronous
+        setTimeout(() => {
+          this.posIconSeat.measure((fx, fy, width, height, px, py) => {
+            posXIconSeat = px;
+
+            this.posIconMenu.measure((fx, fy, width, height, px, py) => {
+              posXIconMenu = px;
+              this.doFirstAnimation(posXIconSeat, posXIconMenu);
+            });
+          });
+        }, 200);
+        break;
+    }
   }
 
   onPlatePress = whichPlate => {
@@ -186,6 +258,11 @@ export default class RestaurantAnimation2Screen extends Component {
 
   render() {
 
+    let scaleZoomTabIndicator = this.zoomTabIndicator.interpolate({
+      inputRange: [0, 0.3, 0.7, 0.85, 0.93, 1.0],
+      outputRange: [1.0, 1.5, 1.5, 1.0, 1.2, 1.0],
+    });
+
     let scaleZoomPlate = this.zoomPlate.interpolate({
       inputRange: [0, 0.2, 0.8, 1],
       outputRange: [1.0, 0.9, 1.1, 1.0],
@@ -230,13 +307,27 @@ export default class RestaurantAnimation2Screen extends Component {
             <Text style={styles.textTabIndicator}>Dashboard</Text>
           </View>
           <View style={styles.viewWrapItemTabIndicator}>
-            <Image resizeMode="contain" style={styles.icTabIndicator} source={images.ic_menu}/>
+            <Image resizeMode="contain" style={styles.icTabIndicator} source={images.ic_menu}
+                   ref={view => {
+                     this.posIconMenu = view
+                   }}/>
             <Text style={styles.textTabIndicator}>Menus</Text>
           </View>
           <View style={styles.viewWrapItemTabIndicator}>
-            <Image resizeMode="contain" style={styles.icTabIndicator} source={images.ic_seat}/>
+            <Image resizeMode="contain" style={styles.icTabIndicator} source={images.ic_seat}
+                   ref={view => (this.posIconSeat = view)}/>
             <Text style={styles.textTabIndicator}>Seats</Text>
           </View>
+
+          {/*Indicator*/}
+          {this.state.shouldShowIndicator ? <View style={styles.viewWrapIndicator}>
+              <Animated.View
+                style={[styles.viewIndicator, {
+                  marginLeft: this.moveTabIndicator,
+                  transform: [{scaleX: scaleZoomTabIndicator}]
+                }]}/>
+            </View>
+            : null}
         </View>
 
         {/*Group plates*/}
@@ -264,7 +355,8 @@ export default class RestaurantAnimation2Screen extends Component {
                           <View style={styles.viewWrapContentPlateWhite}>
                             <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
                             <Text style={styles.textCount}>{this.state.countQuantity}</Text>
-                            <TouchableWithoutFeedback onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
+                            <TouchableWithoutFeedback
+                              onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
                               <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
                             </TouchableWithoutFeedback>
                           </View>
@@ -308,7 +400,8 @@ export default class RestaurantAnimation2Screen extends Component {
                           <View style={styles.viewWrapContentPlateWhite}>
                             <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
                             <Text style={styles.textCount}>{this.state.countQuantity}</Text>
-                            <TouchableWithoutFeedback onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
+                            <TouchableWithoutFeedback
+                              onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
                               <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
                             </TouchableWithoutFeedback>
                           </View>
@@ -355,7 +448,8 @@ export default class RestaurantAnimation2Screen extends Component {
                           <View style={styles.viewWrapContentPlateWhite}>
                             <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
                             <Text style={styles.textCount}>{this.state.countQuantity}</Text>
-                            <TouchableWithoutFeedback onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
+                            <TouchableWithoutFeedback
+                              onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
                               <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
                             </TouchableWithoutFeedback>
                           </View>
@@ -399,7 +493,8 @@ export default class RestaurantAnimation2Screen extends Component {
                           <View style={styles.viewWrapContentPlateWhite}>
                             <Image style={{width: 20, height: 20}} source={images.ic_remove_circle}/>
                             <Text style={styles.textCount}>{this.state.countQuantity}</Text>
-                            <TouchableWithoutFeedback onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
+                            <TouchableWithoutFeedback
+                              onPress={this.state.isBtnPlatePress ? this.onIconAddPress : null}>
                               <Image style={{width: 20, height: 20}} source={images.ic_add_circle}/>
                             </TouchableWithoutFeedback>
                           </View>

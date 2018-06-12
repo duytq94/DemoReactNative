@@ -50,6 +50,17 @@ export default StyleSheet.create({
     fontSize: 13,
     marginLeft: 8,
   },
+  viewWrapIndicator: {
+    position: 'absolute',
+    left: 20,
+    right: 20,
+  },
+  viewIndicator: {
+    width: 20,
+    height: 20,
+    borderRadius: 20 / 2,
+    backgroundColor: 'white',
+  },
 
   // Text entrance
   textEntrance: {
