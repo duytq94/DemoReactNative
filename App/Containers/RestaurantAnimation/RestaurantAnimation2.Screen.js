@@ -116,11 +116,11 @@ export default class RestaurantAnimation2Screen extends Component {
       whichPlate: whichPlate,
     });
 
-    this.fadeInWhitePlate.setValue(0.0);
+    this.fadeInWhitePlate.setValue(0);
     this.zoomPlate.setValue(0);
     Animated.parallel([
       Animated.timing(this.fadeInWhitePlate, {
-        toValue: 1.0,
+        toValue: 1,
         duration: 800
       }),
       Animated.timing(this.zoomPlate, {
@@ -133,6 +133,14 @@ export default class RestaurantAnimation2Screen extends Component {
   onAnimationPlateSuccess = () => {
     this.setState({
       isBtnPlatePress: true,
+    });
+  };
+
+  onAnimationCancelCompleted = () => {
+    this.setState({
+      whichPlate: 0,
+      isBtnPlatePress: false,
+      countQuantity: 0,
     });
   };
 
@@ -161,12 +169,19 @@ export default class RestaurantAnimation2Screen extends Component {
   }
 
   onIconCancelPress = () => {
-    this.setState({
-      whichPlate: 0,
-      isBtnPlatePress: false,
-      countQuantity: 0,
-    });
+    this.fadeInWhitePlate.setValue(1);
+    this.zoomPlate.setValue(1);
 
+    Animated.parallel([
+      Animated.timing(this.fadeInWhitePlate, {
+        toValue: 0,
+        duration: 800
+      }),
+      Animated.timing(this.zoomPlate, {
+        toValue: 0,
+        duration: 800
+      })
+    ]).start(this.onAnimationCancelCompleted);
   };
 
   render() {

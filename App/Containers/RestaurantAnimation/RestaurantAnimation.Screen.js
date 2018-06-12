@@ -184,8 +184,8 @@ export default class RestaurantAnimationScreen extends Component {
       }),
     ]).start(this.onAnimationCompleted)
 
-    // Notice that we can call setState in here because
-    // setState will setValue immediately and then animation can check value to revert
+    // Notice that we can't call setState in here because
+    // setState will setValue immediately and then animation check value and do nothing
   };
 
   onOthersIconPress = whichMenuIcon => {
