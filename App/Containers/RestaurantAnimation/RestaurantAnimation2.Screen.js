@@ -70,12 +70,12 @@ export default class RestaurantAnimation2Screen extends Component {
       // Move tab indicator
       Animated.timing(this.moveTabIndicator, {
         toValue: posXIconMenu - 21,
-        duration: 5000,
+        duration: 500,
         delay: 200,
       }),
       Animated.timing(this.zoomTabIndicator, {
         toValue: 1,
-        duration: 7000,
+        duration: 700,
         delay: 200,
       }),
 
@@ -302,23 +302,6 @@ export default class RestaurantAnimation2Screen extends Component {
 
         {/* Tab indicator */}
         <View style={styles.tabIndicator}>
-          <View style={styles.viewWrapItemTabIndicator}>
-            <Image resizeMode="contain" style={styles.icTabIndicator} source={images.ic_home}/>
-            <Text style={styles.textTabIndicator}>Dashboard</Text>
-          </View>
-          <View style={styles.viewWrapItemTabIndicator}>
-            <Image resizeMode="contain" style={styles.icTabIndicator} source={images.ic_menu}
-                   ref={view => {
-                     this.posIconMenu = view
-                   }}/>
-            <Text style={styles.textTabIndicator}>Menus</Text>
-          </View>
-          <View style={styles.viewWrapItemTabIndicator}>
-            <Image resizeMode="contain" style={styles.icTabIndicator} source={images.ic_seat}
-                   ref={view => (this.posIconSeat = view)}/>
-            <Text style={styles.textTabIndicator}>Seats</Text>
-          </View>
-
           {/*Indicator*/}
           {this.state.shouldShowIndicator ? <View style={styles.viewWrapIndicator}>
               <Animated.View
@@ -328,6 +311,29 @@ export default class RestaurantAnimation2Screen extends Component {
                 }]}/>
             </View>
             : null}
+
+          <View style={styles.viewWrapItemTabIndicator}>
+            <Image resizeMode="contain" style={styles.icTabIndicator} source={images.ic_home}/>
+            <Text style={styles.textTabIndicator}>Dashboard</Text>
+          </View>
+
+          <View style={styles.viewWrapItemTabIndicator}>
+            <Image resizeMode="contain"
+                   style={[styles.icTabIndicator, {tintColor: this.state.shouldShowIndicator ? '#f53970' : 'white'}]}
+                   source={images.ic_menu}
+                   ref={view => {
+                     this.posIconMenu = view
+                   }}/>
+            <Text style={styles.textTabIndicator}>Menus</Text>
+          </View>
+
+          <View style={styles.viewWrapItemTabIndicator}>
+            <Image resizeMode="contain"
+                   style={[styles.icTabIndicator, {tintColor: this.state.shouldShowIndicator ? 'white' : '#f53970'}]}
+                   source={images.ic_seat}
+                   ref={view => (this.posIconSeat = view)}/>
+            <Text style={styles.textTabIndicator}>Seats</Text>
+          </View>
         </View>
 
         {/*Group plates*/}
