@@ -9,7 +9,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native'
-import {NavigationActions} from 'react-navigation'
 
 import styles from './RestaurantAnimation2.Style'
 import images from '../../Themes/Images'
@@ -31,6 +30,7 @@ export default class RestaurantAnimation2Screen extends Component {
     // Animation phrase 1 (push up plates and menu)
     this.moveTabIndicator = new Animated.Value(0);
     this.zoomTabIndicator = new Animated.Value(0);
+    this.tweenColorTabIndicator = new Animated.Value(0);
 
     this.comeUpPlate1 = new Animated.Value(10);
     this.comeUpPlate2 = new Animated.Value(20);
@@ -79,6 +79,11 @@ export default class RestaurantAnimation2Screen extends Component {
         toValue: 1,
         duration: 700 * this.timeDilation,
         delay: 200,
+      }),
+      Animated.timing(this.tweenColorTabIndicator, {
+        toValue: 1,
+        duration: 450 * this.timeDilation,
+        delay: 350,
       }),
 
       // Come up plates
@@ -264,6 +269,10 @@ export default class RestaurantAnimation2Screen extends Component {
       inputRange: [0, 0.3, 0.7, 0.85, 0.93, 1.0],
       outputRange: [1.0, 1.5, 1.5, 1.0, 1.2, 1.0],
     });
+    let shiftColorTabIndicator = this.tweenColorTabIndicator.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['#ffffff', '#f53970'],
+    });
 
     let scaleZoomPlate = this.zoomPlate.interpolate({
       inputRange: [0, 0.2, 0.8, 1],
@@ -309,7 +318,7 @@ export default class RestaurantAnimation2Screen extends Component {
               <Animated.View
                 style={[styles.viewIndicator, {
                   marginLeft: this.moveTabIndicator,
-                  transform: [{scaleX: scaleZoomTabIndicator}]
+                  transform: [{scaleX: scaleZoomTabIndicator}],
                 }]}/>
             </View>
             : null}
@@ -320,12 +329,12 @@ export default class RestaurantAnimation2Screen extends Component {
           </View>
 
           <View style={styles.viewWrapItemTabIndicator}>
-            <Image resizeMode="contain"
-                   style={[styles.icTabIndicator, {tintColor: this.state.shouldShowIndicator ? '#f53970' : 'white'}]}
-                   source={images.ic_menu}
-                   ref={view => {
-                     this.posIconMenu = view
-                   }}/>
+            <Animated.Image resizeMode="contain"
+                            style={[styles.icTabIndicator, {tintColor: shiftColorTabIndicator}]}
+                            source={images.ic_menu}
+                            ref={view => {
+                              this.posIconMenu = view
+                            }}/>
             <Text style={styles.textTabIndicator}>Menus</Text>
           </View>
 
