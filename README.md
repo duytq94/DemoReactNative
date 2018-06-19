@@ -3,7 +3,6 @@
 ## App include:
 
 * FetchApi Screen - Get data from local, from internet through redux.
-* Restaurant Animation Screen - Make multiple animations work together.
 * Simple Animation Screen - Some animations simple.
 * List Screen - Get list questions from stack overflow and show on list.
 * Tab Screen - Device a screen to 2 tabs.
@@ -18,7 +17,6 @@
 ## Screenshots:
 
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="30%" width="30%">
-<img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/RestaurantAnimation.gif" height="30%" width="30%">
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/AnimationScreen.jpg" height="30%" width="30%">
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/ListScreen.jpg" height="30%" width="30%">
 
