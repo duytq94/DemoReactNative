@@ -5,7 +5,6 @@ import {
   FlatList,
   Image,
   BackHandler,
-  TextInput,
   TouchableOpacity,
   RefreshControl,
   Linking
@@ -89,7 +88,7 @@ export class ListScreen extends Component {
             style={{ backgroundColor: '#f5f5f5' }}
             data={this.props.data}
             renderItem={this.renderItem}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item, index) => index.toString()}
             ItemSeparatorComponent={this.renderSeparator}
           />
         </View>

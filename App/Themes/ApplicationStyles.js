@@ -1,6 +1,7 @@
 import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
+import { Platform } from 'react-native'
 
 // This file is for a reusable grouping of Theme items.
 // Similar to an XML fragment layout in Android
@@ -44,7 +45,27 @@ const ApplicationStyles = {
       ...Fonts.style.h2,
       fontSize: 14,
       color: Colors.text
-    }
+    },
+    toolbar: {
+      width: '100%',
+      height: Platform.OS === 'android' ? 48 : 68,
+      justifyContent: 'center',
+      backgroundColor: 'white'
+    },
+    titleToolbar: {
+      color: '#203152',
+      fontWeight: 'bold',
+      fontSize: 18,
+      alignSelf: 'center',
+      marginTop: Platform.OS === 'android' ? 0 : 20
+    },
+    icBack: {
+      position: 'absolute',
+      width: 23,
+      height: 23,
+      left: 26,
+      top: Platform.OS === 'android' ? 10 : 20
+    },
   },
   darkLabelContainer: {
     padding: Metrics.smallMargin,
@@ -74,7 +95,7 @@ const ApplicationStyles = {
     borderColor: Colors.ember,
     alignItems: 'center',
     textAlign: 'center'
-  }
+  },
 }
 
 export default ApplicationStyles

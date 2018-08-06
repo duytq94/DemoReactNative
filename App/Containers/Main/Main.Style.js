@@ -1,18 +1,8 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
+import ApplicationStyles from '../../Themes/ApplicationStyles'
 
 export default StyleSheet.create({
-  toolbar: {
-    width: '100%',
-    height: 48,
-    justifyContent: 'center',
-    backgroundColor: 'white'
-  },
-  titleToolbar: {
-    color: '#203152',
-    fontWeight: 'bold',
-    fontSize: 18,
-    alignSelf: 'center'
-  },
+  ...ApplicationStyles.screen,
   button: {
     borderRadius: 10,
     margin: 10,
