@@ -76,7 +76,17 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   textInputDialog: {
-    marginLeft: 10,
-    marginRight: 10
+    margin: 10
+  },
+  viewUnderline: {
+    width: '95%',
+    height: 0.5,
+    backgroundColor: 'grey',
+    alignSelf: 'center'
+  },
+  viewWrapBtn:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 10
   }
 })

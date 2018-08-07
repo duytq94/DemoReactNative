@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 import ApplicationStyles from '../../Themes/ApplicationStyles'
 
 export default StyleSheet.create({
@@ -51,11 +51,11 @@ export default StyleSheet.create({
     color: '#f5a623'
   },
   textInput: {
-    marginLeft: 20,
-    marginRight: 20
+    margin: 10
   },
   viewItemInput: {
-    marginTop: 10
+    marginTop: 10,
+    marginBottom: 10
   },
   btnChangeBackground: {
     width: 40,
@@ -66,5 +66,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute'
+  },
+  viewBreakLine: {
+    width: '90%',
+    height: 0.3,
+    backgroundColor: 'grey',
+    marginLeft: 10
   }
 })

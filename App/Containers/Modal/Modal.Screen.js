@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   View,
   Text,
@@ -15,7 +15,7 @@ import images from '../../Themes/Images'
 export default class ModalScreen extends Component {
   constructor(props) {
     super(props)
-    backPress = this.handleBackPress.bind(this)
+    this.backPress = this.handleBackPress.bind(this)
 
     this.state = {
       dialogVisible: false
@@ -23,23 +23,23 @@ export default class ModalScreen extends Component {
   }
 
   openModal() {
-    this.setState({ dialogVisible: true })
+    this.setState({dialogVisible: true})
   }
 
   onDialogDismiss() {
-    this.setState({ dialogVisible: false })
+    this.setState({dialogVisible: false})
   }
 
   onDialogDone() {
-    this.setState({ dialogVisible: false })
+    this.setState({dialogVisible: false})
   }
 
   componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', backPress)
+    BackHandler.addEventListener('hardwareBackPress', this.backPress)
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', backPress)
+    BackHandler.removeEventListener('hardwareBackPress', this.backPress)
   }
 
   handleBackPress() {
@@ -52,10 +52,10 @@ export default class ModalScreen extends Component {
       <View style={styles.viewContainer}>
         <View style={styles.toolbar}>
           <TouchableOpacity onPress={() => this.handleBackPress()}>
-            <Image style={styles.icBack} source={images.ic_back} />
+            <Image style={styles.icBack} source={images.ic_back}/>
           </TouchableOpacity>
           <Text style={styles.titleToolbar}>DIALOG</Text>
-          <View style={styles.icBack} />
+          <View style={styles.icBack}/>
         </View>
 
         <View style={styles.viewBody}>
@@ -84,28 +84,26 @@ export default class ModalScreen extends Component {
               <TextInput
                 placeholder="Username"
                 style={styles.textInputDialog}
-                underlineColorAndroid="#8e8e93"
+                underlineColorAndroid="rgba(0,0,0,0)"
                 onChangeText={textUserInput =>
-                  this.setState({ currentText: textUserInput })
+                  this.setState({currentText: textUserInput})
                 }
                 numberOfLines={1}
               />
+              <View style={styles.viewUnderline}/>
               <TextInput
                 secureTextEntry={true}
                 placeholder="Password"
                 style={styles.textInputDialog}
-                underlineColorAndroid="#8e8e93"
+                underlineColorAndroid="rgba(0,0,0,0)"
                 onChangeText={textUserInput =>
-                  this.setState({ currentText: textUserInput })
+                  this.setState({currentText: textUserInput})
                 }
                 numberOfLines={1}
               />
+              <View style={styles.viewUnderline}/>
               <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center'
-                }}
-              >
+                style={styles.viewWrapBtn}>
                 <TouchableOpacity
                   style={styles.btnDismissDialog}
                   onPress={() => this.onDialogDismiss()}
