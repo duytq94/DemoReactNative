@@ -1,23 +1,9 @@
-import React, { Component } from 'react'
-import {
-  View,
-  Text,
-  BackHandler,
-  StatusBar,
-  Image,
-  WebView,
-  TextInput,
-  DatePickerAndroid,
-  DatePickerIOS,
-  TouchableOpacity
-} from 'react-native'
-import moment from 'moment'
-// import DateTimePicker from 'react-native-modal-datetime-picker'
+import moment from 'moment';
+import React, { Component } from 'react';
+import { BackHandler, DatePickerAndroid, DatePickerIOS, Image, Text, TouchableOpacity, View, Platform } from 'react-native';
+import images from '../../Themes/Images';
+import styles from './Time.Style';
 
-import Toast from 'react-native-simple-toast'
-
-import styles from './Time.Style'
-import images from '../../Themes/Images'
 
 export default class TimeScreen extends Component {
   constructor(props) {
@@ -46,6 +32,9 @@ export default class TimeScreen extends Component {
     this.setState({
       currentTime: moment().format('MMMM Do YYYY, hh:mm:ss a')
     })
+  }
+
+  setDate(newDate) {
   }
 
   showDatePicker() {
@@ -88,14 +77,21 @@ export default class TimeScreen extends Component {
 
         <View style={{ height: 100 }} />
 
-        <TouchableOpacity
-          style={styles.btnDone}
-          onPress={() => {
-            this.showDatePicker()
-          }}
-        >
-          <Text style={styles.textBtnDone}>Show picker</Text>
-        </TouchableOpacity>
+        {
+          Platform.OS === 'android' ?
+            <TouchableOpacity
+              style={styles.btnDone}
+              onPress={() => {
+                this.showDatePicker()
+              }}
+            >
+              <Text style={styles.textBtnDone}>Show picker</Text>
+            </TouchableOpacity> :
+            <DatePickerIOS
+              date={new Date()}
+              onDateChange={this.setDate} />
+        }
+
       </View>
     )
   }

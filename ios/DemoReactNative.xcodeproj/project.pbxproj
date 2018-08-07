@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		000DD88AC89540DEA552C80C /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C56B9842FA6944AF90D51C99 /* MaterialCommunityIcons.ttf */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
@@ -62,7 +63,6 @@
 		8E58B842AC2C4DDBB0CBD948 /* SFUIText-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 276C0EE2D51D46428614F1DE /* SFUIText-SemiboldItalic.ttf */; };
 		950C7081126244A3866670C4 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0AC96DD552443C4B8F153B3 /* Roboto.ttf */; };
 		9C71BD5345DD40B5ACB21730 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7105D1CF0576404C9BF61675 /* FontAwesome.ttf */; };
-		A3753AC2AD3E48508F6DCC2A /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A90400FE3B34F2D8D9EDC35 /* libAirMaps.a */; };
 		ACD6A46884834FCDB4BD43E9 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C3804730D98466EB40BF601 /* Entypo.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B71A451B262847D18D2487C8 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEC08EDFB756442382280D58 /* Roboto_medium.ttf */; };
@@ -535,7 +535,6 @@
 				1AE57DEF29564AEAA26FB799 /* libReactNativeConfig.a in Frameworks */,
 				BE763915645A41879F897BF2 /* libRNImagePicker.a in Frameworks */,
 				0B25666DFE4244819D31759A /* libReactNativePermissions.a in Frameworks */,
-				A3753AC2AD3E48508F6DCC2A /* libAirMaps.a in Frameworks */,
 				0512F3A728EF49E695ECF889 /* libLRDRCTSimpleToast.a in Frameworks */,
 				C8161A0BB5FD43A196FCEF9C /* libRCTOneSignal.a in Frameworks */,
 				524BAF5E159954032C338378 /* libPods-DemoReactNative.a in Frameworks */,
