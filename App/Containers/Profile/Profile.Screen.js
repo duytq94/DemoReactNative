@@ -9,7 +9,6 @@ import {
   StatusBar,
   ScrollView
 } from 'react-native'
-import Permissions from 'react-native-permissions'
 import ImagePicker from 'react-native-image-picker'
 
 import styles from './Profile.Style'
@@ -19,22 +18,6 @@ export default class ProfileScreen extends Component {
   constructor(props) {
     super(props)
     this.backPress = this.handleBackPress.bind(this)
-
-    Permissions.request('storage', {
-      rationale: {
-        title: 'Cool Photo App Camera Permission',
-        message:
-          'Cool Photo App needs access to your camera ' +
-          'so you can take awesome pictures.'
-      }
-    }).then(response => {
-      this.setState({storagePermission: response})
-    })
-
-    // Permissions.check('readSms').then(response => {
-    //     // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'photo
-    //     this.setState({ smsPermission: response })
-    // })
 
     this.state = {
       avatarSource: '',
