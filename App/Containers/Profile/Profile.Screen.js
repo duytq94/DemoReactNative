@@ -7,7 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
   StatusBar,
-  ScrollView
+  ScrollView,
+  KeyboardAvoidingView
 } from 'react-native'
 import ImagePicker from 'react-native-image-picker'
 
@@ -66,7 +67,6 @@ export default class ProfileScreen extends Component {
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.backPress)
     console.log('duy log storage', this.state.storagePermission)
-    // console.log('duy log sms', this.state.smsPermission);
   }
 
   handleBackPress() {
@@ -131,73 +131,77 @@ export default class ProfileScreen extends Component {
         </View>
 
         {/* Input field */}
-        <ScrollView>
-          <View style={{margin: 10, flex: 1}}>
-            <View style={styles.viewItemInput}>
-              <Text style={styles.textTitleInput}>Username</Text>
-              <TextInput
-                style={styles.textInput}
-                underlineColorAndroid="rgba(0,0,0,0)"
-                placeholder="Harry King"
-                placeholderTextColor="#aeaeae"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  this.refs.countryInput.focus()
-                }}
-              />
-              <View style={styles.viewBreakLine}/>
-            </View>
+        <View>
+          <ScrollView>
+            <View style={{margin: 10, flex: 1}}>
+              <View style={styles.viewItemInput}>
+                <Text style={styles.textTitleInput}>Username</Text>
+                <TextInput
+                  style={styles.textInput}
+                  underlineColorAndroid="rgba(0,0,0,0)"
+                  placeholder="Harry King"
+                  placeholderTextColor="#aeaeae"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    this.refs.countryInput.focus()
+                  }}
+                />
+                <View style={styles.viewBreakLine}/>
+              </View>
 
-            <View style={styles.viewItemInput}>
-              <Text style={styles.textTitleInput}>Country</Text>
-              <TextInput
-                ref="countryInput"
-                style={styles.textInput}
-                underlineColorAndroid="rgba(0,0,0,0)"
-                placeholder="Singapore"
-                placeholderTextColor="#aeaeae"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  this.refs.addressInput.focus()
-                }}
-              />
-              <View style={styles.viewBreakLine}/>
-            </View>
+              <View style={styles.viewItemInput}>
+                <Text style={styles.textTitleInput}>Country</Text>
+                <TextInput
+                  ref="countryInput"
+                  style={styles.textInput}
+                  underlineColorAndroid="rgba(0,0,0,0)"
+                  placeholder="Singapore"
+                  placeholderTextColor="#aeaeae"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    this.refs.addressInput.focus()
+                  }}
+                />
+                <View style={styles.viewBreakLine}/>
+              </View>
 
-            <View style={styles.viewItemInput}>
-              <Text style={styles.textTitleInput}>Address</Text>
-              <TextInput
-                ref="addressInput"
-                style={styles.textInput}
-                underlineColorAndroid="rgba(0,0,0,0)"
-                placeholder="4 Leng Kee Road, Singapore"
-                placeholderTextColor="#aeaeae"
-                returnKeyType="next"
-                onSubmitEditing={() => {
-                  this.refs.aboutMeInput.focus()
-                }}
-              />
-              <View style={styles.viewBreakLine}/>
-            </View>
+              <View style={styles.viewItemInput}>
+                <Text style={styles.textTitleInput}>Address</Text>
+                <TextInput
+                  ref="addressInput"
+                  style={styles.textInput}
+                  underlineColorAndroid="rgba(0,0,0,0)"
+                  placeholder="4 Leng Kee Road, Singapore"
+                  placeholderTextColor="#aeaeae"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    this.refs.aboutMeInput.focus()
+                  }}
+                />
+                <View style={styles.viewBreakLine}/>
+              </View>
 
-            <View style={styles.viewItemInput}>
-              <Text style={styles.textTitleInput}>About me</Text>
-              <TextInput
-                ref="aboutMeInput"
-                style={styles.textInput}
-                underlineColorAndroid="rgba(0,0,0,0)"
-                placeholder="Fun"
-                placeholderTextColor="#aeaeae"
-                multiline={true}
-              />
-              <View style={styles.viewBreakLine}/>
-            </View>
-          </View>
-        </ScrollView>
+              <View style={styles.viewItemInput}>
+                <Text style={styles.textTitleInput}>About me</Text>
+                <TextInput
+                  ref="aboutMeInput"
+                  style={styles.textInput}
+                  underlineColorAndroid="rgba(0,0,0,0)"
+                  placeholder="Fun"
+                  placeholderTextColor="#aeaeae"
+                  multiline={true}
+                />
+                <View style={styles.viewBreakLine}/>
+              </View>
 
-        <TouchableOpacity style={styles.btnDone}>
-          <Text style={styles.textBtnDone}>DONE</Text>
-        </TouchableOpacity>
+              <TouchableOpacity style={styles.btnDone}>
+                <Text style={styles.textBtnDone}>DONE</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </View>
+
+
       </View>
     )
   }

@@ -17,7 +17,7 @@ import styles from './Time.Style';
 export default class TimeScreen extends Component {
   constructor(props) {
     super(props)
-    backPress = this.handleBackPress.bind(this)
+    this.backPress = this.handleBackPress.bind(this)
     this.state = {
       currentTime: moment().format('MMMM Do YYYY, hh:mm:ss a'),
       currentTimestamp: new Date().getTime(),
@@ -26,11 +26,11 @@ export default class TimeScreen extends Component {
   }
 
   componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', backPress)
+    BackHandler.addEventListener('hardwareBackPress', this.backPress)
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', backPress)
+    BackHandler.removeEventListener('hardwareBackPress', this.backPress)
   }
 
   handleBackPress() {

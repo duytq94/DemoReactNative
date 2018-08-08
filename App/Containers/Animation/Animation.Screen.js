@@ -17,18 +17,18 @@ import images from '../../Themes/Images'
 export default class AnimationScreen extends Component {
   constructor(props) {
     super(props)
-    backPress = this.handleBackPress.bind(this)
+    this.backPress = this.handleBackPress.bind(this)
     this.state = {
       whichBtnClick: 'zoom in',
     }
   }
 
   componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', backPress)
+    BackHandler.addEventListener('hardwareBackPress', this.backPress)
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', backPress)
+    BackHandler.removeEventListener('hardwareBackPress', this.backPress)
   }
 
   handleBackPress() {

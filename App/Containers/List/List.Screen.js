@@ -44,16 +44,16 @@ export class ListScreen extends Component {
 
   constructor(props) {
     super(props)
-    backPress = this.handleBackPress.bind(this)
+    this.backPress = this.handleBackPress.bind(this)
   }
 
   componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', backPress)
+    BackHandler.addEventListener('hardwareBackPress', this.backPress)
     this.props.getList(ListAction.site('stackoverflow'))
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', backPress)
+    BackHandler.removeEventListener('hardwareBackPress', this.backPress)
   }
 
   handleBackPress() {

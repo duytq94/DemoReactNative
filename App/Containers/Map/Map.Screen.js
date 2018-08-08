@@ -20,7 +20,7 @@
 // export default class MapScreen extends Component {
 //   constructor(props) {
 //     super(props)
-//     backPress = this.handleBackPress.bind(this)
+//     this.backPress = this.handleBackPress.bind(this)
 //     this.state = {
 //       coords: [],
 //       toolbarHeight: 47,
@@ -30,7 +30,7 @@
 //   }
 
 //   componentWillMount() {
-//     BackHandler.addEventListener('hardwareBackPress', backPress)
+//     BackHandler.addEventListener('hardwareBackPress', this.backPress)
 
 //     // Rerender view so map can show button "my location"
 //     setTimeout(() => this.setState({ toolbarHeight: 48 }), 500)
@@ -53,7 +53,7 @@
 //   }
 
 //   componentWillUnmount() {
-//     BackHandler.removeEventListener('hardwareBackPress', backPress)
+//     BackHandler.removeEventListener('hardwareBackPress', this.backPress)
 //   }
 
 //   handleBackPress() {

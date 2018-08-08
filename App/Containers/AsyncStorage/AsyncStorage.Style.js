@@ -34,20 +34,24 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   textTitleInput: {
-    color: '#f5a623'
+    color: '#f5a623',
+    margin: 5
   },
   textInput: {
     marginLeft: 20,
     marginRight: 20
   },
   textTitleInput2: {
-    color: '#5dbecb'
-  },
-  textInput: {
-    marginLeft: 20,
-    marginRight: 20
+    color: '#5dbecb',
+    margin: 5
   },
   viewItemInput: {
-    marginTop: 10
+    margin: 10
+  },
+  breakLine: {
+    width: '95%',
+    height: 0.5,
+    backgroundColor: 'grey',
+    margin: 5
   }
 })

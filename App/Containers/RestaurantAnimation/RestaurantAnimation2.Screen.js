@@ -16,7 +16,7 @@ import images from '../../Themes/Images'
 export default class RestaurantAnimation2Screen extends Component {
   constructor(props) {
     super(props);
-    backPress = this.handleBackPress.bind(this);
+    this.backPress = this.handleBackPress.bind(this);
 
     this.timeDilation = this.props.navigation.state.params.timeDilation;
 
@@ -235,11 +235,11 @@ export default class RestaurantAnimation2Screen extends Component {
   };
 
   componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', backPress)
+    BackHandler.addEventListener('hardwareBackPress', this.backPress)
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', backPress)
+    BackHandler.removeEventListener('hardwareBackPress', this.backPress)
   }
 
   handleBackPress() {

@@ -7,7 +7,7 @@ import images from '../../Themes/Images'
 export default class RestaurantAnimationScreen extends Component {
   constructor(props) {
     super(props);
-    backPress = this.handleBackPress.bind(this);
+    this.backPress = this.handleBackPress.bind(this);
 
     // Slow down speed animation here (1 = default)
     this.timeDilation = 2;
@@ -56,11 +56,11 @@ export default class RestaurantAnimationScreen extends Component {
   }
 
   componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', backPress)
+    BackHandler.addEventListener('hardwareBackPress', this.backPress)
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', backPress)
+    BackHandler.removeEventListener('hardwareBackPress', this.backPress)
   }
 
   handleBackPress() {
