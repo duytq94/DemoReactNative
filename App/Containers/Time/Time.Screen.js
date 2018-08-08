@@ -1,6 +1,15 @@
 import moment from 'moment';
-import React, { Component } from 'react';
-import { BackHandler, DatePickerAndroid, DatePickerIOS, Image, Text, TouchableOpacity, View, Platform } from 'react-native';
+import React, {Component} from 'react';
+import {
+  BackHandler,
+  DatePickerAndroid,
+  DatePickerIOS,
+  Image,
+  Platform,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
 import images from '../../Themes/Images';
 import styles from './Time.Style';
 
@@ -11,6 +20,7 @@ export default class TimeScreen extends Component {
     backPress = this.handleBackPress.bind(this)
     this.state = {
       currentTime: moment().format('MMMM Do YYYY, hh:mm:ss a'),
+      currentTimestamp: new Date().getTime(),
       isDatePickerVisible: false
     }
   }
@@ -34,20 +44,24 @@ export default class TimeScreen extends Component {
     })
   }
 
+  getTimestamp() {
+    this.setState({
+      currentTimestamp: new Date().getTime(),
+    })
+  }
+
   setDate(newDate) {
   }
 
   showDatePicker() {
     try {
-      const { action, year, month, day } = DatePickerAndroid.open({
-        // Use `new Date()` for current date.
-        // May 25 2020. Month 0 is January.
+      const {action, year, month, day} = DatePickerAndroid.open({
         date: new Date(2020, 4, 25)
       })
       if (action !== DatePickerAndroid.dismissedAction) {
         // Selected year, month (0-11), day
       }
-    } catch ({ code, message }) {
+    } catch ({code, message}) {
       console.warn('Cannot open date picker', message)
     }
   }
@@ -57,12 +71,13 @@ export default class TimeScreen extends Component {
       <View style={styles.viewContainer}>
         <View style={styles.toolbar}>
           <TouchableOpacity onPress={() => this.handleBackPress()}>
-            <Image style={styles.icBack} source={images.ic_back} />
+            <Image style={styles.icBack} source={images.ic_back}/>
           </TouchableOpacity>
           <Text style={styles.titleToolbar}>TIME</Text>
-          <View style={styles.icBack} />
+          <View style={styles.icBack}/>
         </View>
 
+        {/*Current time*/}
         <TouchableOpacity
           style={styles.btnDone}
           onPress={() => {
@@ -71,12 +86,28 @@ export default class TimeScreen extends Component {
         >
           <Text style={styles.textBtnDone}>Get current time</Text>
         </TouchableOpacity>
-        <Text style={{ color: 'black', textAlign: 'center' }}>
+        <Text style={{color: 'black', textAlign: 'center'}}>
           {this.state.currentTime}
         </Text>
 
-        <View style={{ height: 100 }} />
+        <View style={{height: 30}}/>
 
+        {/*Current timestamp*/}
+        <TouchableOpacity
+          style={styles.btnDone}
+          onPress={() => {
+            this.getTimestamp()
+          }}
+        >
+          <Text style={styles.textBtnDone}>Get current timestamp</Text>
+        </TouchableOpacity>
+        <Text style={{color: 'black', textAlign: 'center'}}>
+          {this.state.currentTimestamp}
+        </Text>
+
+        <View style={{height: 30}}/>
+
+        {/*Show picker on android or calendar on iOS */}
         {
           Platform.OS === 'android' ?
             <TouchableOpacity
@@ -89,7 +120,7 @@ export default class TimeScreen extends Component {
             </TouchableOpacity> :
             <DatePickerIOS
               date={new Date()}
-              onDateChange={this.setDate} />
+              onDateChange={this.setDate}/>
         }
 
       </View>
