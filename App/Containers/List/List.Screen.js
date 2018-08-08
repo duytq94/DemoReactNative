@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   View,
   Text,
@@ -10,27 +10,27 @@ import {
   Linking
 } from 'react-native'
 
-import { connect } from 'react-redux'
-import { ListAction } from './List.Action'
+import {connect} from 'react-redux'
+import {ListAction} from './List.Action'
 
 import styles from './List.Style'
 import images from '../../Themes/Images'
 
 export class ListScreen extends Component {
-  renderItem({ item }) {
+  renderItem({item}) {
     return (
       <TouchableOpacity
         onPress={() => {
           Linking.openURL(item.link)
         }}
       >
-        <View style={{ padding: 10, flexDirection: 'row' }}>
+        <View style={styles.viewWrapItem}>
           <Image
-            source={{ uri: item.owner.profile_image }}
-            style={{ borderRadius: 20, margin: 10, width: 40, height: 40 }}
+            source={{uri: item.owner.profile_image}}
+            style={{borderRadius: 20, margin: 10, width: 40, height: 40}}
           />
-          <View style={{ flex: 5 }}>
-            <Text style={{ color: '#f5a623' }}>{item.title}</Text>
+          <View style={{flex: 5}}>
+            <Text style={{color: '#f5a623'}}>{item.title}</Text>
             <Text>{item.link}</Text>
           </View>
         </View>
@@ -61,19 +61,15 @@ export class ListScreen extends Component {
     return true
   }
 
-  renderSeparator() {
-    return <View style={styles.viewSeparator} />
-  }
-
   render() {
     return (
       <View style={styles.viewContainer}>
         <View style={styles.toolbar}>
           <TouchableOpacity onPress={() => this.handleBackPress()}>
-            <Image style={styles.icBack} source={images.ic_back} />
+            <Image style={styles.icBack} source={images.ic_back}/>
           </TouchableOpacity>
           <Text style={styles.titleToolbar}>LIST</Text>
-          <View style={styles.icBack} />
+          <View style={styles.icBack}/>
         </View>
 
         <View style={styles.viewContainer}>
@@ -85,11 +81,10 @@ export class ListScreen extends Component {
                 colors={['red']}
               />
             }
-            style={{ backgroundColor: '#f5f5f5' }}
+            style={{backgroundColor: '#f5f5f5'}}
             data={this.props.data}
             renderItem={this.renderItem}
             keyExtractor={(item, index) => index.toString()}
-            ItemSeparatorComponent={this.renderSeparator}
           />
         </View>
       </View>

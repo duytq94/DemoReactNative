@@ -54,10 +54,11 @@ export default StyleSheet.create({
     marginTop: 20,
     fontWeight: 'bold'
   },
-  viewSeparator: {
-    width: '90%',
-    height: 0.5,
-    backgroundColor: '#7e8da6',
-    alignSelf: 'center'
+  viewWrapItem: {
+    padding: 10,
+    flexDirection: 'row',
+    margin: 10,
+    backgroundColor: 'white',
+    borderRadius: 4
   }
 })
