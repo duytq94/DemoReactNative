@@ -1,18 +1,11 @@
-import React, { Component } from 'react'
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  BackHandler,
-  Alert
-} from 'react-native'
+import React, {Component} from 'react'
+import {Alert, BackHandler, ScrollView, Text, TouchableOpacity, View} from 'react-native'
 import styles from './Main.Style'
 
 export default class MainScreen extends Component {
   constructor(props) {
     super(props)
-    BackHandler.addEventListener('hardwareBackPress', function() {
+    BackHandler.addEventListener('hardwareBackPress', function () {
       Alert.alert(
         'Exit app',
         'Are you sure to exit?',
@@ -106,15 +99,6 @@ export default class MainScreen extends Component {
               <Text style={styles.textBtn}>AsyncStorage Screen</Text>
             </TouchableOpacity>
 
-            {/* <TouchableOpacity
-              style={styles.button}
-              onPress={() => {
-                this.props.navigation.navigate('MapScreen', {})
-              }}
-            >
-              <Text style={styles.textBtn}>Map Screen</Text>
-            </TouchableOpacity> */}
-
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
@@ -139,7 +123,7 @@ export default class MainScreen extends Component {
                 this.props.navigation.navigate('ModalScreen', {})
               }}
             >
-              <Text style={styles.textBtn}>Modal(Dialog) Screen</Text>
+              <Text style={styles.textBtn}>Dialog Screen</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
