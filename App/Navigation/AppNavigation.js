@@ -6,7 +6,6 @@ import ListScreen from '../Containers/List/List.Screen'
 import TabScreen from '../Containers/Tab/Tab.Screen'
 import ProfileScreen from '../Containers/Profile/Profile.Screen'
 import AsyncStorageScreen from '../Containers/AsyncStorage/AsyncStorage.Screen'
-// import MapScreen from '../Containers/Map/Map.Screen'
 import WebScreen from '../Containers/Web/Web.Screen'
 import TimeScreen from '../Containers/Time/Time.Screen'
 import ModalScreen from '../Containers/Modal/Modal.Screen'
@@ -27,7 +26,6 @@ const PrimaryNav = StackNavigator(
     TabScreen: {screen: TabScreen},
     ProfileScreen: {screen: ProfileScreen},
     AsyncStorageScreen: {screen: AsyncStorageScreen},
-    // MapScreen: { screen: MapScreen },
     WebScreen: {screen: WebScreen},
     TimeScreen: {screen: TimeScreen},
     ModalScreen: {screen: ModalScreen},
@@ -38,7 +36,7 @@ const PrimaryNav = StackNavigator(
   {
     // Default config for all screens
     headerMode: 'none',
-    initialRouteName: 'LaunchScreen',
+    initialRouteName: 'MainScreen',
     navigationOptions: {
       headerStyle: styles.header
     }

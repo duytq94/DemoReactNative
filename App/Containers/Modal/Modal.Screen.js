@@ -1,13 +1,5 @@
 import React, {Component} from 'react'
-import {
-  View,
-  Text,
-  BackHandler,
-  Modal,
-  TouchableOpacity,
-  TextInput,
-  Image
-} from 'react-native'
+import {BackHandler, Image, Modal, Text, TextInput, TouchableOpacity, View} from 'react-native'
 
 import styles from './Modal.Style'
 import images from '../../Themes/Images'
@@ -22,8 +14,12 @@ export default class ModalScreen extends Component {
     }
   }
 
-  openModal() {
+  openModal = () => {
     this.setState({dialogVisible: true})
+  }
+
+  closeModal = () => {
+    this.setState({dialogVisible: false})
   }
 
   onDialogDismiss() {

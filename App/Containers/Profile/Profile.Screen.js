@@ -1,15 +1,5 @@
 import React, {Component} from 'react'
-import {
-  View,
-  Text,
-  Image,
-  BackHandler,
-  TextInput,
-  TouchableOpacity,
-  StatusBar,
-  ScrollView,
-  KeyboardAvoidingView
-} from 'react-native'
+import {BackHandler, Image, ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native'
 import ImagePicker from 'react-native-image-picker'
 
 import styles from './Profile.Style'
@@ -27,7 +17,7 @@ export default class ProfileScreen extends Component {
   }
 
   pickPhoto(isChangeAvatar) {
-    var options = {
+    let options = {
       title: 'Choose ',
       customButtons: [{name: 'fb', title: 'Choose Photo from Facebook'}],
       storageOptions: {
@@ -48,9 +38,6 @@ export default class ProfileScreen extends Component {
       } else {
         let source = {uri: response.uri}
 
-        // You can also display the image using data:
-        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
-
         if (isChangeAvatar) {
           this.setState({avatarSource: source})
         } else {
@@ -66,7 +53,6 @@ export default class ProfileScreen extends Component {
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.backPress)
-    console.log('duy log storage', this.state.storagePermission)
   }
 
   handleBackPress() {
@@ -85,8 +71,6 @@ export default class ProfileScreen extends Component {
           <View style={styles.icBack}/>
         </View>
 
-        <StatusBar backgroundColor="#000000"/>
-
         {/* Change background */}
         <View>
           <Image
@@ -96,7 +80,7 @@ export default class ProfileScreen extends Component {
                 ? this.state.backgroundSource
                 : images.bg_avatar
             }
-            style={{height: 150}}
+            style={{height: 100}}
           />
           <TouchableOpacity
             onPress={() => this.pickPhoto(false)}
@@ -131,7 +115,7 @@ export default class ProfileScreen extends Component {
         </View>
 
         {/* Input field */}
-        <View>
+        <View style={{flex: 1}}>
           <ScrollView>
             <View style={{margin: 10, flex: 1}}>
               <View style={styles.viewItemInput}>

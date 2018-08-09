@@ -1,13 +1,5 @@
-import React, { Component } from 'react'
-import {
-  View,
-  Text,
-  BackHandler,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-  ActivityIndicator
-} from 'react-native'
+import React, {Component} from 'react'
+import {BackHandler, Image, Text, TouchableOpacity, View} from 'react-native'
 
 import TabOne from './TabOne.Screen'
 import TabTwo from './TabTwo.Screen'
@@ -20,7 +12,8 @@ export default class TabScreen extends Component {
     super(props)
     this.backPress = this.handleBackPress.bind(this)
     this.state = {
-      isTabOneActive: true
+      isTabOneActive: true,
+      stateAtRoot: 'This is state at root'
     }
   }
 
@@ -42,17 +35,21 @@ export default class TabScreen extends Component {
       <View style={styles.viewContainer}>
         <View style={styles.toolbar}>
           <TouchableOpacity onPress={() => this.handleBackPress()}>
-            <Image style={styles.icBack} source={images.ic_back} />
+            <Image style={styles.icBack} source={images.ic_back}/>
           </TouchableOpacity>
           <Text style={styles.titleToolbar}>TAB</Text>
-          <View style={styles.icBack} />
+          <View style={styles.icBack}/>
         </View>
 
-        <View style={{ flex: 1 }}>
-          {this.state.isTabOneActive ? <TabOne /> : <TabTwo />}
+        <View style={{flex: 1}}>
+          {
+            this.state.isTabOneActive ?
+              <TabOne {...this.state} {...this.props} updateState={this.setState.bind(this)}/> :
+              <TabTwo/>
+          }
         </View>
 
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{flexDirection: 'row', backgroundColor: 'white'}}>
           <TouchableOpacity
             style={
               this.state.isTabOneActive ? styles.btnActive : styles.btnPassive
@@ -61,15 +58,13 @@ export default class TabScreen extends Component {
               this.setState({
                 isTabOneActive: true
               })
-            }}
-          >
+            }}>
             <Text
               style={
                 this.state.isTabOneActive
                   ? styles.textActive
                   : styles.textPassive
-              }
-            >
+              }>
               TAB ONE
             </Text>
           </TouchableOpacity>
@@ -82,15 +77,13 @@ export default class TabScreen extends Component {
               this.setState({
                 isTabOneActive: false
               })
-            }}
-          >
+            }}>
             <Text
               style={
                 this.state.isTabOneActive
                   ? styles.textPassive
                   : styles.textActive
-              }
-            >
+              }>
               TAB TWO
             </Text>
           </TouchableOpacity>

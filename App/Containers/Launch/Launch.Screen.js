@@ -23,7 +23,7 @@ export default class LaunchScreen extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.props.navigation.navigate('MainScreen'), 3000)
+    setTimeout(() => this.props.navigation.navigate('MainScreen'), 1800)
   }
 }
 
@@ -36,7 +36,7 @@ class ZoomInView extends Component {
   componentDidMount() {
     Animated.timing(this.zoomAnim, {
       toValue: 150,
-      duration: 2000
+      duration: 1500
     }).start()
   }
   render() {
@@ -64,7 +64,7 @@ class FadeInView extends React.Component {
   componentDidMount() {
     Animated.timing(this.fadeAnim, {
       toValue: 1,
-      duration: 2000
+      duration: 1500
     }).start()
   }
 

@@ -1,19 +1,32 @@
-import React, { Component } from 'react'
-import { Container, Content } from 'native-base'
-import { Text } from 'react-native'
+import React, {Component} from 'react'
+import {Text, View} from 'react-native'
 
 export default class TabTwoScreen extends Component {
+
+  // Log life cycle
+  constructor(props) {
+    super(props)
+    console.log('TabTwo-constructor')
+  }
+
   componentWillMount() {
-    console.tron.log('Tab two will mount')
+    console.log('TabTwo-componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('TabTwo-componentDidMount')
+  }
+
+  componentWillUnmount() {
+    console.log('TabTwo-componentWillUnmount')
   }
 
   render() {
     return (
-      <Container style={{ backgroundColor: '#f5f5f5' }}>
-        <Content>
-          <Text>Tab two</Text>
-        </Content>
-      </Container>
+      <View style={{flex: 1, backgroundColor: '#f5f5f5', alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{fontWeight: 'bold', fontSize: 20}}>Tab two</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 20}}>Check life cycle at log</Text>
+      </View>
     )
   }
 }

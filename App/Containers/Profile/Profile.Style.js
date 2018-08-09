@@ -19,30 +19,30 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   viewWrapAvatar: {
-    width: 80,
-    height: 80,
+    width: 50,
+    height: 50,
     alignSelf: 'center',
     marginTop: -30,
     marginBottom: 10
   },
   imageAvatar: {
-    width: 80,
-    height: 80,
+    width: 50,
+    height: 50,
     alignSelf: 'center',
-    borderRadius: 40,
+    borderRadius: 25,
     marginTop: 20,
     marginBottom: 20
   },
   imageChangeAvatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40
+    width: 50,
+    height: 50,
+    borderRadius: 25
   },
   btnChangeAvatar: {
-    width: 80,
-    height: 80,
+    width: 50,
+    height: 50,
     backgroundColor: 'rgba(0,0,0,0.5)',
-    borderRadius: 40,
+    borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute'
@@ -51,7 +51,8 @@ export default StyleSheet.create({
     color: '#f5a623'
   },
   textInput: {
-    margin: 10
+    marginLeft: 10,
+    marginRight: 10
   },
   viewItemInput: {
     marginTop: 10,
