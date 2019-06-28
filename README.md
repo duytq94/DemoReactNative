@@ -1,6 +1,6 @@
 # Demo React Native - Some common UI in React Native
 
-## App include:
+## App include
 
 * FetchApi Screen - Get data from local, from internet with redux.
 * Simple Animation Screen - Some simple animations.
@@ -13,7 +13,7 @@
 * Dialog Screen - How to make a dialog.
 * And more screen will be update...
 
-## Screenshots:
+## Screenshots
 
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/FetchApiScreen.jpg" height="30%" width="30%">
 <img src="https://raw.githubusercontent.com/duytq94/DemoReactNative/master/Screenshoots/AnimationScreen.jpg" height="30%" width="30%">
